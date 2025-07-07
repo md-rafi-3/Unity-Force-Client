@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUsers, FaHeart, FaBrain, FaLink } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const benefits = [
   {
@@ -32,10 +33,28 @@ const benefits = [
   },
 ];
 
+const glowVariants = {
+  animate: {
+    boxShadow: [
+      '0 0 0px rgba(224,93,23,0)',
+      '0 0 8px rgba(224,93,23,0.3)',
+      '0 0 12px rgba(224,93,23,0.4)',
+      '0 0 8px rgba(224,93,23,0.3)',
+      '0 0 0px rgba(224,93,23,0)',
+    ],
+    borderColor: ['#eee', '#E05D17', '#f17e31', '#E05D17', '#eee'],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
 const BenefitsSection = () => {
   return (
-    <section className="py-16 px-3  bg-base-100 text-base-content max-w-7xl mx-auto text-center mb-12">
-      <div>
+    <section className="py-16 px-3 max-w-7xl mx-auto bg-base-100 text-base-content">
+      <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl font-bold mb-3 text-primary">
           Why Volunteer With Us?
         </h2>
@@ -44,18 +63,21 @@ const BenefitsSection = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {benefits.map((benefit) => (
-          <div
+          <motion.div
             key={benefit.id}
-            className="bg-white dark:bg-base-200 p-6 rounded-xl shadow hover:shadow-lg transition duration-300 text-center border border-gray-100 dark:border-gray-700"
+            variants={glowVariants}
+            animate="animate"
+            whileHover={{ scale: 1.025 }}
+            className="bg-white dark:bg-base-200 p-6 rounded-xl shadow border border-gray-300 dark:border-gray-700 text-center"
           >
-            {benefit.icon}
+           <div className='flex justify-center items-center'> {benefit.icon}</div>
             <h3 className="text-lg font-semibold mb-2">{benefit.title}</h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
               {benefit.description}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

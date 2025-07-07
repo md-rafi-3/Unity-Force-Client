@@ -33,7 +33,7 @@ const DarkMode = () => {
 
     
     return (
-        <div className='btn btn-circle border-0 bg-base-300 '>
+        <div className='btn btn-circle border-0 bg-base-200 '>
             <label className="swap swap-rotate">
   {/* this hidden checkbox controls the state */}
   <input type="checkbox" onChange={toggleTheme}/>
