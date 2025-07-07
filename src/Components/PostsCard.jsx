@@ -5,7 +5,7 @@ const PostsCard = ({ post }) => {
   const { title, image, category, location, deadline } = post;
 
   return (
-    <div className="text-white rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-2 hover:shadow-2xl group">
+    <div className="text-white border border-blue-300 hover:border-blue-500 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-2xl  group">
       {/* Image */}
       <div className="overflow-hidden">
         <img

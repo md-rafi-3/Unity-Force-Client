@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router';
 import PostsCard from '../Components/PostsCard';
 import { FaArrowRight } from 'react-icons/fa';
 import WhyVolunteer from '../Components/WhyVolunteer';
+import VolunteerTestimonials from '../Components/VolunteerTestimonials';
 
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
             <Banner></Banner>
             <div className='max-w-7xl  px-3  mx-auto mt-40'>
                 <h1 className='text-4xl text-base-300 text-center font-bold'>Volunteer Needs Now</h1>
-                <p className='text-lg font-bold text-base-300 text-center opacity-70'>These opportunities are available right now. Find one that inspires you!</p>
+                <p className='text-lg font-bold text-gray-500 text-center '>These opportunities are available right now. Find one that inspires you!</p>
                 <div className='grid mt-12 grid-cols-1 gap-5 md:grid-cols-3'>
                     {postsData.map(post=><PostsCard post={post}></PostsCard>)}
                 </div>
@@ -26,6 +27,9 @@ const Home = () => {
 
 
             <WhyVolunteer></WhyVolunteer>
+
+
+            <VolunteerTestimonials></VolunteerTestimonials>
         </div>
     );
 };
