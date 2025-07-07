@@ -4,6 +4,7 @@ import { MdOutlineEmail } from 'react-icons/md';
 import { TbLockPassword } from 'react-icons/tb';
 import loginLottie from '../assets/login.json'
 import Lottie from 'lottie-react';
+import { Link } from 'react-router';
 
 const Login = () => {
   return (
@@ -23,7 +24,7 @@ const Login = () => {
             <div>
               <label className="text-sm text-base-300 flex items-center gap-1"><MdOutlineEmail size={18}/>Email</label>
                      <input
-  type="text"
+  type="text" name='email'
   placeholder="Enter your email"
   className="w-full border-0 border-b-2 border-base-300 focus:border-blue-500 focus:outline-none py-2 text-base-300 placeholder-gray-400"
 />
@@ -32,7 +33,7 @@ const Login = () => {
               <label className="text-sm text-base-300 flex items-center gap-1"><TbLockPassword size={18} />Password</label>
               
              <input
-  type="password"
+  type="password" name='password'
   placeholder="Enter your password"
   className="w-full border-0 border-b-2 border-base-300 focus:border-blue-500 focus:outline-none py-2 text-base-300 placeholder-gray-400"
 />
@@ -48,13 +49,17 @@ const Login = () => {
               Log in
             </button>
 
-            <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+           
+           
+          </form>
+           <div className="divider text-base-300">Or continue with</div>
+
+           <button className="btn bg-white text-black border-[#e5e5e5] w-full">
              <FcGoogle size={18} />Log in with Google
             </button>
-          </form>
 
           <p className="text-sm text-center text-gray-500 mt-6">
-            Don’t have an account? <a href="#" className="link link-primary">Sign up </a>
+            Don’t have an account? <Link to="/signUp" className="link link-primary">Sign up </Link>
           </p>
         </div>
       </div>
