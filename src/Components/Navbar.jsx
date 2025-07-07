@@ -1,11 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdOutlineLogin } from 'react-icons/md';
 import DarkMode from './DarkMode';
 import { Link, NavLink } from 'react-router';
 import { FaHandHoldingHeart, FaRegEdit } from 'react-icons/fa';
 import { IoHomeOutline, IoSearchOutline } from 'react-icons/io5';
+import { AuthContext } from '../Context/AuthConrext';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
+  const {user,userSignOut}=useContext(AuthContext)
+
+  console.log(user)
+   const handleLogOut=()=>{
+    userSignOut().then(() => {
+      Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+    }).catch((error) => {
+      console.log(error.message)
+    })
+   }
     const links=<>
     <li><NavLink to="/" className={({ isActive }) =>
             isActive
@@ -48,7 +66,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end flex items-center gap-3">
     <DarkMode></DarkMode>
-   <Link to="/login"> <buttn className=" btn-primary btn "><MdOutlineLogin />Login</buttn></Link>
+  {user?<button onClick={handleLogOut} className='btn btn-outline hover:bg-primary'>Logout</button>: <Link to="/login"> <buttn className=" btn-primary btn "><MdOutlineLogin />Login</buttn></Link>}
   </div>
 </div>
     );

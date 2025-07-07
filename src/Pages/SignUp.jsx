@@ -1,13 +1,51 @@
+import { useContext, useState } from 'react';
 import { FaGoogle, FaRegUser } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 import { MdOutlineEmail } from 'react-icons/md';
 import { TbLockPassword } from 'react-icons/tb';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import signUpLottie from '../assets/signUp.json';
 import Lottie from 'lottie-react';
 import { Link } from 'react-router';
 import { IoMdPhotos } from 'react-icons/io';
+import { AuthContext } from '../Context/AuthConrext';
+import Swal from 'sweetalert2';
 
 const SignUp = () => {
+  const {createUser,updateUser}=useContext(AuthContext)
+  console.log(createUser)
+  const [showPassword, setShowPassword] = useState(false);
+  const handleSignUp=(e)=>{
+    e.preventDefault()
+    const name=e.target.name.value;
+    const photoURL=e.target.photoURL.value;
+    const email=e.target.email.value;
+    const password=e.target.password.value;
+    console.log({name,photoURL,email,password})
+    const updatedData={
+      displayName: name,
+      photoURL: photoURL
+    }
+    createUser(email,password).then((result) => {
+      console.log(result.user)
+      updateUser(updatedData).then(() => {
+        Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+      }).catch((error) => {
+        console.log(error.message)
+      })
+      
+
+    }).catch((error) => {
+      console.log(error.message)
+    })
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="bg-base-200 border-2 border-blue-300 hover:border-blue-500 shadow-xl rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
@@ -21,7 +59,7 @@ const SignUp = () => {
           <h1 className="text-3xl font-bold mb-2 text-base-300">Create an Account</h1>
           <p className="text-sm text-base-300 mb-6">Enter your details below to sign up</p>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSignUp} className="space-y-4">
             <div>
               <label className="text-sm text-base-300 flex items-center gap-1">
                 <FaRegUser size={18} />Name
@@ -59,12 +97,20 @@ const SignUp = () => {
               <label className="text-sm text-base-300 flex items-center gap-1">
                 <TbLockPassword size={18} />Password
               </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                className="w-full border-0 border-b-2 border-base-300 focus:border-blue-500 focus:outline-none py-2 text-base-300 placeholder-gray-400"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Enter your password"
+                  className="w-full border-0 border-b-2 border-base-300 focus:border-blue-500 focus:outline-none py-2 text-base-300 placeholder-gray-400 pr-10"
+                />
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer text-base-300"
+                >
+                  {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+                </div>
+              </div>
             </div>
 
             <button type="submit" className="btn btn-primary w-full">
