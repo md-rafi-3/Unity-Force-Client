@@ -2,6 +2,7 @@ import React from 'react';
 import { MdOutlineLogin } from 'react-icons/md';
 import DarkMode from './DarkMode';
 import { NavLink } from 'react-router';
+import { FaHandHoldingHeart } from 'react-icons/fa';
 
 const Navbar = () => {
     const links=<>
@@ -22,7 +23,7 @@ const Navbar = () => {
           }>Add Post</NavLink></li>
     </>
     return (
-       <div className="navbar bg-base-100 shadow-sm md:px-10">
+       <div className="navbar bg-base-100 border-b border-blue-300 hover:border-blue-500 shadow-sm sticky top-0 z-50 md:px-10">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -34,7 +35,7 @@ const Navbar = () => {
        {links}
       </ul>
     </div>
-    <a className=" font-bold text-xl">Unity <span className='text-primary '>Force</span></a>
+    <a className=" font-bold text-xl flex items-center "><span className='text-primary mr-1'><FaHandHoldingHeart size={23} /></span>Unity <span className='text-primary '>Force</span></a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu text-base font-medium menu-horizontal px-1">

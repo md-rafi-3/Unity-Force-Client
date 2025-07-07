@@ -58,7 +58,7 @@ const BenefitsSection = () => {
         <h2 className="text-3xl md:text-4xl text-base-300 font-bold mb-3 ">
           Why Volunteer With Us?
         </h2>
-        <p className="text-gray-500 max-w-2xl mx-auto">
+        <p className="text-gray-500 text-lg max-w-2xl mx-auto">
           Discover the meaningful advantages of giving your time and heart to others.
         </p>
       </div>
