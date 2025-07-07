@@ -1,8 +1,9 @@
 import React from 'react';
 import { MdOutlineLogin } from 'react-icons/md';
 import DarkMode from './DarkMode';
-import { NavLink } from 'react-router';
-import { FaHandHoldingHeart } from 'react-icons/fa';
+import { Link, NavLink } from 'react-router';
+import { FaHandHoldingHeart, FaRegEdit } from 'react-icons/fa';
+import { IoHomeOutline, IoSearchOutline } from 'react-icons/io5';
 
 const Navbar = () => {
     const links=<>
@@ -10,17 +11,19 @@ const Navbar = () => {
             isActive
               ? 'text-primary underline'
               : ' hover:text-primary transition'
-          }>Home</NavLink></li>
+          }><IoHomeOutline />Home</NavLink></li>
     <li><NavLink to="/allPosts" className={({ isActive }) =>
             isActive
               ? 'text-primary underline'
               : ' hover:text-primary transition'
-          }>All Posts</NavLink></li>
+          }><IoSearchOutline />All Posts</NavLink></li>
     <li><NavLink to="/addPost" className={({ isActive }) =>
             isActive
               ? 'text-primary underline'
               : ' hover:text-primary transition'
-          }>Add Post</NavLink></li>
+          }><FaRegEdit />Add Post</NavLink></li>
+   
+
     </>
     return (
        <div className="navbar bg-base-100 border-b border-blue-300 hover:border-blue-500 shadow-sm sticky top-0 z-50 md:px-10">
@@ -33,6 +36,7 @@ const Navbar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
        {links}
+       <li><Link tp="/login"><MdOutlineLogin />Login / Sign Up</Link></li>
       </ul>
     </div>
     <a className=" font-bold text-xl flex items-center "><span className='text-primary mr-1'><FaHandHoldingHeart size={23} /></span>Unity <span className='text-primary '>Force</span></a>
@@ -44,7 +48,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end flex items-center gap-3">
     <DarkMode></DarkMode>
-    <a className=" btn-primary btn "><MdOutlineLogin />Login</a>
+   <Link to="/login"> <buttn className=" btn-primary btn "><MdOutlineLogin />Login</buttn></Link>
   </div>
 </div>
     );

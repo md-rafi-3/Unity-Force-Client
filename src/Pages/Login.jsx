@@ -1,0 +1,65 @@
+import { FaGoogle } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+import { MdOutlineEmail } from 'react-icons/md';
+import { TbLockPassword } from 'react-icons/tb';
+import loginLottie from '../assets/login.json'
+import Lottie from 'lottie-react';
+
+const Login = () => {
+  return (
+    <div className="min-h-screen flex items-center justify-center  p-4">
+      <div className="bg-base-200 border-2 border-blue-300 hover:border-blue-500 shadow-xl rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
+        {/* Left Image Section */}
+        <div className=" p-6 flex items-center justify-center">
+         <Lottie animationData={loginLottie} loop  />
+        </div>
+
+        {/* Right Login Form Section */}
+        <div className="p-8 md:p-12 flex flex-col justify-center">
+          <h1 className="text-3xl font-bold mb-2 text-base-300">Welcome Back!</h1>
+          <p className="text-sm text-base-300 mb-6">Enter your details below</p>
+
+          <form className="space-y-4">
+            <div>
+              <label className="text-sm text-base-300 flex items-center gap-1"><MdOutlineEmail size={18}/>Email</label>
+                     <input
+  type="text"
+  placeholder="Enter your email"
+  className="w-full border-0 border-b-2 border-base-300 focus:border-blue-500 focus:outline-none py-2 text-base-300 placeholder-gray-400"
+/>
+            </div>
+            <div>
+              <label className="text-sm text-base-300 flex items-center gap-1"><TbLockPassword size={18} />Password</label>
+              
+             <input
+  type="password"
+  placeholder="Enter your password"
+  className="w-full border-0 border-b-2 border-base-300 focus:border-blue-500 focus:outline-none py-2 text-base-300 placeholder-gray-400"
+/>
+            </div>
+            <div className="flex justify-between items-center text-sm text-gray-500">
+              <label className="flex items-center gap-2">
+                <input type="checkbox" className="checkbox checkbox-sm" /> Remember me
+              </label>
+              <a href="#" className="hover:underline">Forgot password?</a>
+            </div>
+
+            <button type="submit" className="btn btn-primary w-full">
+              Log in
+            </button>
+
+            <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+             <FcGoogle size={18} />Log in with Google
+            </button>
+          </form>
+
+          <p className="text-sm text-center text-gray-500 mt-6">
+            Don’t have an account? <a href="#" className="link link-primary">Sign up </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;
