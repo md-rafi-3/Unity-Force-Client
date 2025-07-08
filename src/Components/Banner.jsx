@@ -115,10 +115,10 @@ const Banner = () => {
       </Swiper>
 
       {/* Navigation Buttons */}
-      <button className="custom-prev absolute z-50 top-1/2 left-2 transform -translate-y-1/2 bg-white text-black bg-opacity-60 hover:bg-opacity-90 p-1.5 rounded-full shadow text-sm md:text-base">
+      <button className="custom-prev absolute z-50 top-1/2 left-2 transform -translate-y-1/2  text-white bg-opacity-60 hover:bg-opacity-90 p-1.5 rounded-full shadow text-sm md:text-base">
         <FaChevronLeft className="w-4 h-4 md:w-5 md:h-5" />
       </button>
-      <button className="custom-next z-50 absolute top-1/2 right-2 transform -translate-y-1/2 bg-white text-black bg-opacity-60 hover:bg-opacity-90 p-1.5 rounded-full shadow text-sm md:text-base">
+      <button className="custom-next z-50 absolute top-1/2 right-2 transform -translate-y-1/2  text-white bg-opacity-60 hover:bg-opacity-90 p-1.5 rounded-full shadow text-sm md:text-base">
         <FaChevronRight className="w-4 h-4 md:w-5 md:h-5" />
       </button>
     </div>

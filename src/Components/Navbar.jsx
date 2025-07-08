@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
-import { MdOutlineLogin } from 'react-icons/md';
+import { MdLogin, MdOutlineLogin } from 'react-icons/md';
 import DarkMode from './DarkMode';
 import { Link, NavLink } from 'react-router';
-import { FaHandHoldingHeart, FaRegEdit } from 'react-icons/fa';
+import { FaHandHoldingHeart, FaRegEdit, FaRegUser } from 'react-icons/fa';
 import { IoHomeOutline, IoSearchOutline } from 'react-icons/io5';
 import { AuthContext } from '../Context/AuthConrext';
 import Swal from 'sweetalert2';
+import { LuLogOut } from 'react-icons/lu';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
   const {user,userSignOut}=useContext(AuthContext)
 
   console.log(user)
-   const handleLogOut=()=>{
+   const handleSignOut=()=>{
     userSignOut().then(() => {
       Swal.fire({
   position: "center",
@@ -44,7 +46,7 @@ const Navbar = () => {
 
     </>
     return (
-       <div className="navbar bg-base-100 border-b border-blue-300 hover:border-blue-500 shadow-sm sticky top-0 z-50 md:px-10">
+       <div className="navbar  bg-base-100 border-b border-blue-300 hover:border-blue-500 shadow-sm sticky top-0 z-50 md:px-10">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -54,7 +56,7 @@ const Navbar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
        {links}
-       <li><Link tp="/login"><MdOutlineLogin />Login / Sign Up</Link></li>
+      {!user &&  <li><Link tp="/login"><MdOutlineLogin />Login / Sign Up</Link></li>}
       </ul>
     </div>
     <a className=" font-bold text-xl flex items-center "><span className='text-primary mr-1'><FaHandHoldingHeart size={23} /></span>Unity <span className='text-primary '>Force</span></a>
@@ -64,9 +66,46 @@ const Navbar = () => {
      {links}
     </ul>
   </div>
-  <div className="navbar-end flex items-center gap-3">
+  <div className="navbar-end flex pr-2 md:pr-0 items-center  gap-3">
     <DarkMode></DarkMode>
-  {user?<button onClick={handleLogOut} className='btn btn-outline hover:bg-primary'>Logout</button>: <Link to="/login"> <buttn className=" btn-primary btn "><MdOutlineLogin />Login</buttn></Link>}
+
+      {
+          user ? (<div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img id="user-tooltip" src={user?.photoURL || "https://i.ibb.co/4pDNDk1/avatar-placeholder.png"} alt={user.displayName}
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+            {/* Tooltip */}
+            <Tooltip
+              anchorSelect="#user-tooltip"
+              place="bottom"
+              content={user.displayName}
+            />
+            <div tabIndex={0}
+              className="menu menu-sm dropdown-content border-[#3e743e20] bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              <div><h3 className='text-sm'>{user?.displayName}</h3>
+                <p className='text-xs'>{user?.email}</p>
+              </div>
+              <ul>
+                <li>
+                  <Link to="/myTips" >
+                    <FaRegUser />Profile
+
+                  </Link>
+                </li>
+
+                <li><button onClick={handleSignOut}><LuLogOut />Logout</button></li>
+              </ul>
+            </div>
+          </div>) : <Link to="/login">
+            <button className='md:flex hidden items-center gap-1 px-3 py-3 hover:bg-primary rounded-lg hover:text-white'><MdLogin />Login</button>
+          </Link>
+        }
+      
+  
   </div>
 </div>
     );
