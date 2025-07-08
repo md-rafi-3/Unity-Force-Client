@@ -18,7 +18,7 @@ const PostsCard = ({ post }) => {
       {/* Card Body */}
       <div className="p-4 bg-base-200 text-base-300 space-y-2">
         {/* Category Badge */}
-        <span className="inline-block badge text-sm px-3 py-1 rounded-full font-medium bg-primary text-white">
+        <span className="badge badge-primary text-white">
           {category}
         </span>
 

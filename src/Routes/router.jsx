@@ -6,6 +6,7 @@ import AllPost from '../Pages/AllPost';
 import AddPost from '../Pages/AddPost';
 import Login from '../Pages/Login';
 import SignUp from '../Pages/SignUp';
+import Loading from '../Components/Loading';
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
     children:[
         {index:true,
             element:<Home></Home>,
-            loader:()=>fetch("http://localhost:3000/needPosts")
+            loader:()=>fetch("http://localhost:3000/needPosts"),
+            hydrateFallbackElement:<Loading></Loading>
         },
         {
           path:"allPosts",

@@ -46,7 +46,7 @@ const Navbar = () => {
 
     </>
     return (
-       <div className="navbar  bg-base-100 border-b border-blue-300 hover:border-blue-500 shadow-sm sticky top-0 z-50 md:px-10">
+       <div className="navbar  bg-base-100  shadow-sm sticky top-0 z-50 md:px-10">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -56,7 +56,7 @@ const Navbar = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
        {links}
-      {!user &&  <li><Link tp="/login"><MdOutlineLogin />Login / Sign Up</Link></li>}
+      {!user &&  <li><Link to="/login"><MdOutlineLogin />Login / Sign Up</Link></li>}
       </ul>
     </div>
     <a className=" font-bold text-xl flex items-center "><span className='text-primary mr-1'><FaHandHoldingHeart size={23} /></span>Unity <span className='text-primary '>Force</span></a>

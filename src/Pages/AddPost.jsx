@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import {
     FaEnvelope,
     FaUser,
@@ -8,34 +8,40 @@ import {
     FaAlignLeft,
     FaListUl,
     FaUsers,
-    FaHandHoldingHeart
+    FaHandHoldingHeart,
+    FaCheckCircle
 } from "react-icons/fa";
 import { AuthContext } from "../Context/AuthConrext";
 import { IoMdPhotos } from "react-icons/io";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddPost = () => {
     const { user } = useContext(AuthContext)
-    const [formData, setFormData] = useState({
-        title: "",
-        description: "",
-        category: "",
-        location: "",
-        volunteersNeeded: 1,
-        deadline: "",
-        organizer: "",
-        email: "",
-    });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        const form=e.target
+        const formData=new FormData(form)
+        const data=Object.fromEntries(formData.entries())
+        console.log(data)
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-        // Backend API call korte parba ekhane
-    };
+        axios.post("http://localhost:3000/needPost",data).then(res=>{
+            console.log(res.data)
+            if(res.data.insertedId){
+                Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+            }
+        }).catch((error) => {
+         console.log(error.message)            
+        })
+    }
+ 
 
     return (
         <div className="max-w-xl mx-auto mt-10 p-6 shadow-xl rounded-xl bg-base-200  border border-blue-300 hover:border-blue-500 ">
@@ -56,8 +62,8 @@ const AddPost = () => {
                         name="title"
                         placeholder="Enter a compelling title"
                         className="input  input-bordered w-full"
-                        value={formData.title}
-                        onChange={handleChange}
+                        
+                       
                         required
                     />
                 </div>
@@ -72,8 +78,8 @@ const AddPost = () => {
                         name="location"
                         placeholder="Where will volunteering take place?"
                         className="input input-bordered w-full"
-                        value={formData.location}
-                        onChange={handleChange}
+                
+                        
                         required
                     />
                 </div>
@@ -83,15 +89,14 @@ const AddPost = () => {
                 <div className="space-y-1">
                     <label className="label font-medium flex text-sm items-center gap-2">
                         <IoMdPhotos />
-                        Photo URL
+                        Thumbnail URL
                     </label>
                     <input
                         type="url"
                         name="location"
-                        placeholder="Enter a photo URL"
+                        placeholder="Enter a tumbnail URL"
                         className="input input-bordered w-full"
-                        value={formData.location}
-                        onChange={handleChange}
+                     
                         required
                     />
                 </div>
@@ -108,15 +113,15 @@ const AddPost = () => {
                         name="description"
                         placeholder="Describe what volunteers will do..."
                         className="textarea textarea-bordered w-full"
-                        value={formData.description}
-                        onChange={handleChange}
+                     
                         maxLength={500}
                         required
                     />
                 </div>
 
                 {/* Category */}
-                <div className="space-y-1">
+            <div className="grid grid-cols-2 gap-4">
+                 <div className="space-y-1">
                     <label className="label font-medium flex text-sm items-center gap-2">
                         <FaListUl />
                         Category
@@ -124,8 +129,8 @@ const AddPost = () => {
                     <select
                         name="category"
                         className="select select-bordered w-full"
-                        value={formData.category}
-                        onChange={handleChange}
+               
+                      
                         required
                     >
                         <option value="">Select a category</option>
@@ -136,6 +141,24 @@ const AddPost = () => {
                     </select>
                 </div>
 
+
+                <div className="space-y-1">
+  <label className="label font-medium flex text-sm items-center gap-2">
+    <FaCheckCircle />
+    Status
+  </label>
+  <select
+    name="status"
+    className="select select-bordered w-full"
+    required
+  >
+    <option value="">Select a status</option>
+    <option value="active">Active</option>
+    <option value="close">Close</option>
+  </select>
+</div>
+
+               </div>
                 {/* Location */}
 
                 {/* Volunteers & Deadline */}
@@ -150,8 +173,7 @@ const AddPost = () => {
                             name="volunteersNeeded"
                             placeholder="Number of volunteers"
                             className="input input-bordered w-full"
-                            value={formData.volunteersNeeded}
-                            onChange={handleChange}
+                           
                             min="1"
                             required
                         />
@@ -166,8 +188,7 @@ const AddPost = () => {
                             type="date"
                             name="deadline"
                             className="input input-bordered  w-full"
-                            value={formData.deadline}
-                            onChange={handleChange}
+                           
                             required
 
                         />
@@ -189,7 +210,7 @@ const AddPost = () => {
 
 
                             defaultValue={user?.displayName || ""}
-                            onChange={handleChange}
+                            
                             required
                            readOnly={!!user?.displayName}
                         />
@@ -207,7 +228,7 @@ const AddPost = () => {
                             placeholder="Contact Email"
                             className="input input-bordered w-full"
                              defaultValue={user?.email || ""}
-                            onChange={handleChange}
+                        
                             required
                             readOnly={!!user?.email}
                         />
