@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
 import { FaEnvelope, FaUser, FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaArrowLeft } from "react-icons/fa";
 import { AuthContext } from '../Context/AuthConrext';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const PostDetails = () => {
     const {user}=useContext(AuthContext)
@@ -13,9 +15,46 @@ const PostDetails = () => {
     deadline,
     location,
     organizer,
-    volunteersNeeded,}=useLoaderData()
+    volunteersNeeded,_id}=useLoaderData()
 
     const navigate=useNavigate()
+
+
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        const form=e.target;
+        const formData = new FormData(form);
+        console.log(formData)
+    const data = Object.fromEntries(formData.entries());
+         data.postId=_id 
+         data.status="pending"
+         data.requestDate=new Date().toISOString().split('T')[0];
+          
+         if (data.volunteersNeeded) {
+  data.volunteersNeeded = parseInt(data.volunteersNeeded);}
+        console.log(data)
+
+        const requestedPostId=_id
+
+        axios.post("http://localhost:3000/applications",{data, requestedPostId}).then(res=>{
+           document.getElementById("volunteer_modal").close()
+            console.log(res.data)
+        }).catch((error) => {
+              document.getElementById("volunteer_modal").close()
+            if(error.status===409){
+                  console.log(error)
+          
+            Swal.fire({
+  position: "center",
+  icon: "error",
+  title: "You have already requested for this post.",
+  showConfirmButton: false,
+  timer: 1500
+});
+            }
+           
+        })
+    }
     
     return (
        <div className="max-w-7xl mx-auto  bg-base-100 p-3">
@@ -25,11 +64,11 @@ const PostDetails = () => {
         <button onClick={()=>navigate(-1)} className='btn btn-primary'><FaArrowLeft /> Back</button>
        
         <div className='flex flex-col lg:flex-row gap-6 mt-3'>
-            <div className="flex-1 md:max-w-70%">
+            <div className="flex-1  md:max-w-70%">
         <img
           src={image || "https://via.placeholder.com/600x400"}
           alt={title}
-          className="rounded-lg mb-6"
+          className="rounded-lg  mb-6"
         />
         <div>
              <h1 className="text-3xl font-bold mb-4">{title}</h1>
@@ -69,7 +108,7 @@ const PostDetails = () => {
           </div>
         </div>
 
-        <button className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">
+        <button disabled={volunteersNeeded===0 ? true : false } onClick={() => document.getElementById("volunteer_modal").showModal()} className="btn btn-primary btn-block">
           Be a Volunteer!
         </button>
       </div>
@@ -78,83 +117,176 @@ const PostDetails = () => {
 
 
         {/* model start */}
-        <button
-  className="btn"
-  onClick={() => document.getElementById("volunteer_modal").showModal()}
->
-  Open Application Modal
-</button>
+      
 
 <dialog id="volunteer_modal" className="modal modal-bottom sm:modal-middle">
-  <div className="modal-box max-w-lg">
-    <h3 className="text-xl font-bold mb-1">Volunteer Application</h3>
+  <div className="modal-box max-w-2xl">
+    <h3 className="text-xl font-bold mb-1">Volunteer Request Form</h3>
     <p className="text-sm mb-4 text-gray-500">
-      You're applying to volunteer for:{" "}
-      <span className="font-semibold text-base-300 ">Food Bank Distribution Day</span>
+      You're requesting to volunteer for:{" "}
+      <span className="font-semibold text-base-300">{title}</span>
     </p>
 
-    <form method="dialog" className="space-y-4">
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div className="flex-1">
-          <label className="label text-sm">Your Name</label>
+    <form onSubmit={handleSubmit} method="dialog" className="space-y-4">
+      {/* Thumbnail */}
+      <div>
+        <label className="label text-sm">Thumbnail</label>
+        <input
+          type="text"
+          name="thumbnail"
+          readOnly
+          defaultValue={image}
+          className="input input-bordered opacity-70 w-full"
+        />
+      </div>
+
+      {/* Title, Category */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="label text-sm">Post Title</label>
           <input
             type="text"
-            defaultValue={user?.displayName}
+            name="title"
             readOnly
-            className="input opacity-70 input-bordered w-full"
+            defaultValue={title}
+            className="input input-bordered opacity-70 w-full"
           />
         </div>
-        <div className="flex-1">
-          <label className="label text-sm">Your Email</label>
+        <div>
+          <label className="label text-sm">Category</label>
+          <input
+            type="text"
+            name="category"
+            readOnly
+            defaultValue={category}
+            className="input input-bordered opacity-70 w-full"
+          />
+        </div>
+      </div>
+
+      {/* Description */}
+      <div>
+        <label className="label text-sm">Description</label>
+        <textarea
+          name="description"
+          readOnly
+          defaultValue={description}
+          className="textarea textarea-bordered opacity-70 w-full"
+        />
+      </div>
+
+      {/* Location, Volunteers Needed */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="label text-sm">Location</label>
+          <input
+            type="text"
+            name="location"
+            readOnly
+            defaultValue={location}
+            className="input input-bordered opacity-70 w-full"
+          />
+        </div>
+        <div>
+          <label className="label text-sm">Volunteers Needed</label>
+          <input
+            type="number"
+            name="volunteersNeeded"
+            readOnly
+            defaultValue={volunteersNeeded}
+            className="input input-bordered opacity-70 w-full"
+          />
+        </div>
+      </div>
+
+      {/* Deadline, Organizer Info */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="label text-sm">Deadline</label>
+          <input
+            type="text"
+            name="deadline"
+            readOnly
+            defaultValue={deadline}
+            className="input input-bordered opacity-70 w-full"
+          />
+        </div>
+        <div>
+          <label className="label text-sm">Organizer Name</label>
+          <input
+            type="text"
+            name="organizerName"
+            readOnly
+            defaultValue={organizer}
+            className="input input-bordered opacity-70 w-full"
+          />
+        </div>
+        <div className="sm:col-span-2">
+          <label className="label text-sm">Organizer Email</label>
           <input
             type="email"
+            name="organizerEmail"
             readOnly
-            defaultValue={user?.email}
-            className="input opacity-70 input-bordered w-full"
+            defaultValue={contactEmail}
+            className="input input-bordered opacity-70 w-full"
           />
         </div>
       </div>
 
-      <div>
-        <label className="label text-sm">Post Location</label>
-        <input
-          type="text"
-          defaultValue={location}
-          className="input opacity-70 input-bordered w-full"
-          readOnly
-        />
+      {/* Volunteer Info */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label className="label text-sm">Volunteer Name</label>
+          <input
+            type="text"
+            name="volunteerName"
+            readOnly
+            defaultValue={user?.displayName}
+            className="input input-bordered opacity-70 w-full"
+          />
+        </div>
+        <div>
+          <label className="label text-sm">Volunteer Email</label>
+          <input
+            type="email"
+            name="volunteerEmail"
+            readOnly
+            defaultValue={user?.email}
+            className="input input-bordered opacity-70 w-full"
+          />
+        </div>
       </div>
 
+      {/* Suggestion */}
       <div>
-        <label className="label text-sm">Application Deadline</label>
-        <input
-          type="text"
-        
-          defaultValue={deadline}
-          className="input opacity-70 input-bordered w-full"
-          readOnly
-        />
-      </div>
-
-      <div>
-        <label className="label text-sm">Suggestion / Message (Optional)</label>
+        <label className="label text-sm">Suggestion / Message</label>
         <textarea
+          name="suggestion"
           placeholder="Any message for the organizer?"
           className="textarea textarea-bordered w-full"
         ></textarea>
       </div>
 
-      <div className="modal-action ">
-        <button type='button' onClick={() => document.getElementById('volunteer_modal').close()}  className="btn btn-outline hover:bg-secondary hover:text-white">
+      {/* Status (hidden) */}
+      <input type="hidden" name="status" value="requested" />
+
+      {/* Actions */}
+      <div className="modal-action">
+        <button
+          type="button"
+          onClick={() => document.getElementById("volunteer_modal").close()}
+          className="btn btn-outline hover:bg-secondary hover:text-white"
+        >
           Cancel
         </button>
-        <button type="submit" className="btn text-white btn-primary">
-          Submit Application
+        <button type="submit" className="btn btn-primary text-white">
+          Request
         </button>
       </div>
     </form>
   </div>
 </dialog>
+
         {/* modal end */}
     </div>
     );

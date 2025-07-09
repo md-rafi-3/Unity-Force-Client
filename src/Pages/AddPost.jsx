@@ -27,11 +27,17 @@ const AddPost = () => {
     const form = e.target;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
+    
 
     // Format deadline
     if (deadline) {
       data.deadline = deadline.toISOString().split("T")[0]; 
     }
+
+     if (data.volunteersNeeded) {
+  data.volunteersNeeded = parseInt(data.volunteersNeeded);
+}
+   
 
     axios.post("http://localhost:3000/needPost", data)
       .then((res) => {

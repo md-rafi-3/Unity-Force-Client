@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../Components/Banner';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 import PostsCard from '../Components/PostsCard';
 import { FaArrowRight } from 'react-icons/fa';
 import WhyVolunteer from '../Components/WhyVolunteer';
@@ -22,7 +22,7 @@ const Home = () => {
                 </div>
 
               <div className='flex items-center justify-center mt-5'>
-                  <button className='btn btn-outline  hover:bg-secondary  shadow-2xl hover:text-white'>See All Opportunities <FaArrowRight /> </button>
+                 <Link to="/allPosts"> <button className='btn btn-outline  hover:bg-secondary  shadow-2xl hover:text-white'>See All Opportunities <FaArrowRight /> </button></Link>
               </div>
             </div>
 
