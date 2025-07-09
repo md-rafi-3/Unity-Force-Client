@@ -11,7 +11,7 @@ import { AuthContext } from '../Context/AuthConrext';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {userLogin}=useContext(AuthContext)
+  const {userLogin,googleLogin}=useContext(AuthContext)
   const handleLogin=(e)=>{
     e.preventDefault()
     const email=e.target.email.value;
@@ -23,6 +23,14 @@ const Login = () => {
       console.log(error.message)
     })
 
+  }
+
+   const handleGoogleLogin=()=>{
+       googleLogin().then(result=>{
+        console.log(result.user)
+       }).catch((error) => {
+        console.log(error.message)
+       })
   }
 
   return (
@@ -85,7 +93,7 @@ const Login = () => {
 
           <div className="divider text-base-300">Or continue with</div>
 
-          <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+          <button onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5] w-full">
             <FcGoogle size={18} />Log in with Google
           </button>
 

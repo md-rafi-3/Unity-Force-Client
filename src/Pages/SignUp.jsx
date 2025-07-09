@@ -12,7 +12,7 @@ import { AuthContext } from '../Context/AuthConrext';
 import Swal from 'sweetalert2';
 
 const SignUp = () => {
-  const {createUser,updateUser}=useContext(AuthContext)
+  const {createUser,updateUser,googleLogin}=useContext(AuthContext)
   console.log(createUser)
   const [showPassword, setShowPassword] = useState(false);
   const handleSignUp=(e)=>{
@@ -44,6 +44,14 @@ const SignUp = () => {
     }).catch((error) => {
       console.log(error.message)
     })
+  }
+
+  const handleGoogleLogin=()=>{
+       googleLogin().then(result=>{
+        console.log(result.user)
+       }).catch((error) => {
+        console.log(error.message)
+       })
   }
 
   return (
@@ -120,7 +128,7 @@ const SignUp = () => {
 
           <div className="divider text-base-300">Or continue with</div>
 
-          <button className="btn bg-white text-black border-[#e5e5e5] w-full">
+          <button onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5] w-full">
             <FcGoogle size={18} />Sign up with Google
           </button>
 
