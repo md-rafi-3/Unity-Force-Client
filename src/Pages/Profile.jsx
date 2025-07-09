@@ -18,7 +18,7 @@ const Profile = () => {
 
       <div className="tabs tabs-lift">
   <input type="radio" name="my_tabs_3" className="tab" aria-label="Manage my posts" />
-  <div className="tab-content bg-base-100 border-base-300 p-6">
+  <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">
    {/* table start */}
    <div className="overflow-x-auto">
   <table className="table">
@@ -46,7 +46,7 @@ const Profile = () => {
   </div>
 
   <input type="radio" name="my_tabs_3" className="tab" aria-label="Tab 2" defaultChecked />
-  <div className="tab-content bg-base-100 border-base-300 p-6">tab 2 contant</div>
+  <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">tab 2 contant</div>
 
   
 </div>

@@ -25,7 +25,7 @@ const AllPost = () => {
    
                 
                 {/* new filter */}
-                <div className="flex flex-wrap items-center gap-2 p-4 bg-base-200 shadow-sm rounded-lg mt-7 justify-center md:justify-start">
+                <div className="flex flex-wrap items-center border border-gray-300/40 dark:border-gray-600/40 gap-2 p-4 bg-base-200 shadow-sm rounded-lg mt-7 justify-center md:justify-start">
                     {/* Search Box */}
                     <div className="flex items-center w-full md:w-auto flex-grow">
                         <label className="input input-bordered flex items-center gap-2 w-full">

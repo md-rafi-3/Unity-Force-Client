@@ -48,7 +48,7 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
-      <div className="bg-base-200 border-2 border-blue-300 hover:border-blue-500 shadow-xl rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
+      <div className="bg-base-200 border border-gray-300/40 dark:border-gray-600/40 shadow-xl rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
         {/* Left Image Section */}
         <div className="p-6 flex items-center justify-center">
           <Lottie animationData={signUpLottie} loop />
