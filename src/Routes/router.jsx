@@ -7,11 +7,15 @@ import AddPost from '../Pages/AddPost';
 import Login from '../Pages/Login';
 import SignUp from '../Pages/SignUp';
 import Loading from '../Components/Loading';
+import PostDetails from '../Pages/PostDetails';
+import Profile from '../Pages/Profile';
+import Error from '../Pages/Error';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement:<Error></Error>,
     children:[
         {index:true,
             element:<Home></Home>,
@@ -25,6 +29,16 @@ const router = createBrowserRouter([
         {
           path:"addPost",
           element:<AddPost></AddPost>
+        },
+        {
+          path:"postDetails/:id",
+          element:<PostDetails></PostDetails>,
+          loader:({params})=>fetch(`http://localhost:3000/needAllPosts/${params.id}`),
+          hydrateFallbackElement:<Loading></Loading>
+        },
+        {
+          path:"profile",
+          element:<Profile></Profile>
         },
         {
           path:"login",

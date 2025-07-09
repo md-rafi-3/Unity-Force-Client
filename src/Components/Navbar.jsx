@@ -91,7 +91,7 @@ const Navbar = () => {
               </div>
               <ul>
                 <li>
-                  <Link to="/myTips" >
+                  <Link to="/profile" >
                     <FaRegUser />Profile
 
                   </Link>

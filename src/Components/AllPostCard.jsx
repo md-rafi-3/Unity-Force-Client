@@ -1,5 +1,6 @@
 import React, { use } from 'react';
 import { FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { Link } from 'react-router';
 
 const AllPostCard = ({allPostPromise}) => {
     const allPostData=use(allPostPromise)
@@ -49,9 +50,10 @@ const AllPostCard = ({allPostPromise}) => {
             
                   {/* Button */}
                   <div className="px-4 bg-base-200 pb-4">
-                    <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300">
-                      View Details
-                    </button>
+                   <Link to={`/postDetails/${post._id}`}>
+        <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300">
+          View Details
+        </button></Link>
                   </div>
                 </div>))}
 

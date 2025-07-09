@@ -224,7 +224,7 @@ const AddPost = () => {
                         </label>
                         <input
                             type="email"
-                            name="email"
+                            name="contactEmail"
                             placeholder="Contact Email"
                             className="input input-bordered w-full"
                              defaultValue={user?.email || ""}
