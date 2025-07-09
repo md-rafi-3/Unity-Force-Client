@@ -10,6 +10,7 @@ import Loading from '../Components/Loading';
 import PostDetails from '../Pages/PostDetails';
 import Profile from '../Pages/Profile';
 import Error from '../Pages/Error';
+import PrivetRoute from '../PrivetRoute/PrivetRoute';
 
 const router = createBrowserRouter([
   {
@@ -28,17 +29,17 @@ const router = createBrowserRouter([
         },
         {
           path:"addPost",
-          element:<AddPost></AddPost>
+          element:<PrivetRoute><AddPost></AddPost></PrivetRoute>
         },
         {
           path:"postDetails/:id",
-          element:<PostDetails></PostDetails>,
+          element:<PrivetRoute><PostDetails></PostDetails></PrivetRoute>,
           loader:({params})=>fetch(`http://localhost:3000/needAllPosts/${params.id}`),
           hydrateFallbackElement:<Loading></Loading>
         },
         {
           path:"profile",
-          element:<Profile></Profile>
+          element:<PrivetRoute><Profile></Profile></PrivetRoute>
         },
         {
           path:"login",

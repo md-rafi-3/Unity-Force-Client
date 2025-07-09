@@ -37,11 +37,11 @@ const Navbar = () => {
               ? 'text-primary underline'
               : ' hover:text-primary transition'
           }><IoSearchOutline />All Posts</NavLink></li>
-    <li><NavLink to="/addPost" className={({ isActive }) =>
+   {user&& <li><NavLink to="/addPost" className={({ isActive }) =>
             isActive
               ? 'text-primary underline'
               : ' hover:text-primary transition'
-          }><FaRegEdit />Add Post</NavLink></li>
+          }><FaRegEdit />Add Post</NavLink></li>}
    
 
     </>

@@ -17,15 +17,36 @@ const Profile = () => {
             {/* tab */}
 
       <div className="tabs tabs-lift">
-  <input type="radio" name="my_tabs_3" className="tab" aria-label="Tab 1" />
+  <input type="radio" name="my_tabs_3" className="tab" aria-label="Manage my posts" />
   <div className="tab-content bg-base-100 border-base-300 p-6">
-    <Suspense fallback={<Loading></Loading>}>
+   {/* table start */}
+   <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+       
+        <th>Opportunity</th>
+        
+        <th>Deadline</th>
+        <th>Status</th>
+        <th className='text-center'>Progress</th>
+        <th className='text-center'>Actions</th>
+      </tr>
+    </thead>
+     <Suspense fallback={<Loading></Loading>}>
         <MyPost myPostsPromise={myPostsPromise(user?.email)}></MyPost>
     </Suspense>
+   
+    {/* foot */}
+   
+  </table>
+</div>
+{/* table end */}
   </div>
 
   <input type="radio" name="my_tabs_3" className="tab" aria-label="Tab 2" defaultChecked />
-  <div className="tab-content bg-base-100 border-base-300 p-6">Tab content 2</div>
+  <div className="tab-content bg-base-100 border-base-300 p-6">tab 2 contant</div>
 
   
 </div>

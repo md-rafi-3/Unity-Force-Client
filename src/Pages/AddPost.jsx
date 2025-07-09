@@ -93,7 +93,7 @@ const AddPost = () => {
                     </label>
                     <input
                         type="url"
-                        name="location"
+                        name="image"
                         placeholder="Enter a tumbnail URL"
                         className="input input-bordered w-full"
                      
