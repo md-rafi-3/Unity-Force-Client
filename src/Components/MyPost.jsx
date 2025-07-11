@@ -89,7 +89,7 @@ const MyPost = ({myPostsPromise}) => {
             
   <button className="btn btn-xs btn-primary join-item"><FaEdit /> Edit</button>
  <Link to={`/postDetails/${post._id}`}> <button className="btn btn-xs btn-secondary join-item"><FaEye />View</button></Link>
-  <button className="btn btn-xs join-item btn-primary"><FaList />Applications</button>
+ <Link to={`/applications/${post._id}`}> <button className="btn btn-xs join-item btn-primary"><FaList />Applications</button></Link>
   <button onClick={()=>handledelete(post._id)} className="btn btn-xs join-item btn-secondary"><MdDelete />
 Delete</button>
   </div>

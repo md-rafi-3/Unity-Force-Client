@@ -34,9 +34,13 @@ const AddPost = () => {
       data.deadline = deadline.toISOString().split("T")[0]; 
     }
 
-     if (data.volunteersNeeded) {
+     if (data?.volunteersNeeded) {
   data.volunteersNeeded = parseInt(data.volunteersNeeded);
+  
 }
+console.log(data)
+
+console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
    
 
     axios.post("http://localhost:3000/allPosts", data)

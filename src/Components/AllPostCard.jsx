@@ -1,5 +1,5 @@
 import React, { use } from 'react';
-import { FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaCalendarAlt, FaUsers } from 'react-icons/fa';
 import { Link } from 'react-router';
 
 const AllPostCard = ({allPostPromise}) => {
@@ -46,6 +46,12 @@ const AllPostCard = ({allPostPromise}) => {
                         })}
                       </span>
                     </div>
+
+                    <div className="flex items-center text-sm gap-1 opacity-70">
+                                <FaUsers className="text-primary"/>
+                                Volunteers needed:{' '}
+                               <span>{post.volunteersNeeded} </span>
+                              </div>
                   </div>
             
                   {/* Button */}

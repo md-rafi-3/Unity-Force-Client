@@ -30,15 +30,18 @@ const PostDetails = () => {
          data.status="pending"
          data.requestDate=new Date().toISOString().split('T')[0];
           
-         if (data.volunteersNeeded) {
+         if (data?.volunteersNeeded) {
   data.volunteersNeeded = parseInt(data.volunteersNeeded);}
         console.log(data)
+
+        console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
 
         const requestedPostId=_id
 
         axios.post("http://localhost:3000/applications",{data, requestedPostId}).then(res=>{
            document.getElementById("volunteer_modal").close()
             console.log(res.data)
+            
         }).catch((error) => {
               document.getElementById("volunteer_modal").close()
             if(error.status===409){

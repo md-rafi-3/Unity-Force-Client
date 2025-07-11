@@ -11,6 +11,7 @@ import PostDetails from '../Pages/PostDetails';
 import Profile from '../Pages/Profile';
 import Error from '../Pages/Error';
 import PrivetRoute from '../PrivetRoute/PrivetRoute';
+import Applications from '../Pages/Applications';
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,12 @@ const router = createBrowserRouter([
         {
           path:"profile",
           element:<PrivetRoute><Profile></Profile></PrivetRoute>
+        },
+        {
+          path:"applications/:id",
+          element:<PrivetRoute><Applications></Applications></PrivetRoute>,
+          loader:({params})=>fetch(`http://localhost:3000/applications/post/${params.id}`),
+          hydrateFallbackElement:<Loading></Loading>
         },
         {
           path:"login",

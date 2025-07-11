@@ -3,6 +3,7 @@ import { FaListUl, FaThLarge, FaSearch } from 'react-icons/fa';
 import { allPostPromise } from '../Data/allPostApi';
 import AllPostCard from '../Components/AllPostCard';
 import Loading from '../Components/Loading';
+import AllPostsTable from '../Components/AllPostsTable';
 
 const AllPost = () => {
     const [category, setCategory] = useState("")
@@ -83,11 +84,38 @@ const AllPost = () => {
 
 
             {/* all card */}
-            <div className='mt-12'>
+            <div className={`mt-10 ${view==="list"?"hidden":"block"}`}>
                 <Suspense fallback={<Loading></Loading>}>
                     <AllPostCard allPostPromise={allPostPromise(category,searchText)}></AllPostCard>
                 </Suspense>
+
+
             </div>
+           
+           {/* post table */}
+            <div className={`mt-10 ${view==="grid"?"hidden":"block"}`}>
+                <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+        
+        <th>Name</th>
+        <th>Job</th>
+        <th>Favorite Color</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <Suspense fallback={<Loading></Loading>}>
+    <AllPostsTable allPostPromise={allPostPromise(category,searchText)}></AllPostsTable>
+    </Suspense>
+    
+  </table>
+</div>
+              
+            </div>
+            {/* post table end*/}
 
         </div>
     );
