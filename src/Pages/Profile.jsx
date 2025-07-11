@@ -4,6 +4,8 @@ import MyPost from '../Components/MyPost';
 import { AuthContext } from '../Context/AuthConrext';
 import { myPostsPromise } from '../Data/myPosts';
 import Loading from '../Components/Loading';
+import MyApplications from '../Components/MyApplications';
+import { myApplicationsPromise } from '../Data/myApplicationsApi';
 // import { myPostsPromise } from '../Data/myPosts';
 
 const Profile = () => {
@@ -46,7 +48,11 @@ const Profile = () => {
   </div>
 
   <input type="radio" name="my_tabs_3" className="tab" aria-label="Tab 2" defaultChecked />
-  <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">tab 2 contant</div>
+  <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">
+  <Suspense fallback={<Loading></Loading>}>
+   <MyApplications myApplicationsPromise={myApplicationsPromise(user?.email)}></MyApplications>
+  </Suspense>
+  </div>
 
   
 </div>

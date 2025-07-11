@@ -24,7 +24,7 @@ const MyPost = ({myPostsPromise}) => {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-       axios.delete(`http://localhost:3000/needPosts/${id}`).then(res=>{
+       axios.delete(`http://localhost:3000/myPosts/${id}`).then(res=>{
 
 
             console.log(res.data)

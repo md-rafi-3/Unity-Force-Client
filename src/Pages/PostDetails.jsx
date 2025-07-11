@@ -57,14 +57,14 @@ const PostDetails = () => {
     }
     
     return (
-       <div className="max-w-7xl mx-auto  bg-base-100 p-3">
+       <div className="max-w-7xl mx-auto py-5  bg-base-100 px-3">
       {/* Left side: Main content */}
       
      
         <button onClick={()=>navigate(-1)} className='btn btn-primary'><FaArrowLeft /> Back</button>
        
         <div className='flex flex-col lg:flex-row gap-6 mt-3'>
-            <div className="flex-1  md:max-w-70%">
+            <div className="flex-1  md:w-[70%]">
         <img
           src={image || "https://via.placeholder.com/600x400"}
           alt={title}
@@ -78,7 +78,7 @@ const PostDetails = () => {
       </div>
 
       {/* Right side: Sidebar */}
-      <div className="w-full border border-gray-300/40 dark:border-gray-600/40 md:max-w-[30%] bg-base-200 shadow-md rounded-md p-6 space-y-6 h-fit">
+      <div className="w-full border border-gray-300/40 dark:border-gray-600/40 md:w-[30%] bg-base-200 shadow-md rounded-md p-6 space-y-6 h-fit">
         <div>
           <h3 className="text-lg font-semibold mb-3">Opportunity Details</h3>
         {/*  */}
@@ -108,7 +108,7 @@ const PostDetails = () => {
           </div>
         </div>
 
-        <button disabled={volunteersNeeded===0 ? true : false } onClick={() => document.getElementById("volunteer_modal").showModal()} className="btn btn-primary btn-block">
+        <button disabled={volunteersNeeded===0 ||user.email===contactEmail? true : false } onClick={() => document.getElementById("volunteer_modal").showModal()} className="btn btn-primary btn-block">
           Be a Volunteer!
         </button>
       </div>

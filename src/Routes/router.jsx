@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children:[
         {index:true,
             element:<Home></Home>,
-            loader:()=>fetch("http://localhost:3000/needPosts"),
+            loader:()=>fetch("http://localhost:3000/allPosts"),
             hydrateFallbackElement:<Loading></Loading>
         },
         {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         {
           path:"postDetails/:id",
           element:<PrivetRoute><PostDetails></PostDetails></PrivetRoute>,
-          loader:({params})=>fetch(`http://localhost:3000/needAllPosts/${params.id}`),
+          loader:({params})=>fetch(`http://localhost:3000/allPosts/${params.id}`),
           hydrateFallbackElement:<Loading></Loading>
         },
         {

@@ -1,5 +1,5 @@
 export const allPostPromise = (category, search) => {
-  let url = "http://localhost:3000/needAllPosts";
+  let url = "http://localhost:3000/allPosts";
 
   const queries = [];
   if (category && category !== "") {

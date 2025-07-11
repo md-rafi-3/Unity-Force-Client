@@ -39,7 +39,7 @@ const AddPost = () => {
 }
    
 
-    axios.post("http://localhost:3000/needPost", data)
+    axios.post("http://localhost:3000/allPosts", data)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
