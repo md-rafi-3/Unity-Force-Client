@@ -39,8 +39,9 @@ const PostDetails = () => {
         const requestedPostId=_id
 
         axios.post("http://localhost:3000/applications",{data, requestedPostId}).then(res=>{
-           document.getElementById("volunteer_modal").close()
-            console.log(res.data)
+           console.log(res.data)
+          document.getElementById("volunteer_modal").close()
+            
             
         }).catch((error) => {
               document.getElementById("volunteer_modal").close()
@@ -258,6 +259,19 @@ const PostDetails = () => {
             className="input input-bordered opacity-70 w-full"
           />
         </div>
+      </div>
+
+
+      {/* photo url */}
+      <div>
+        <label className="label text-sm">Volunteer Photo</label>
+        <input
+          type="url"
+          name="volunteerPhotoURl"
+          className="input input-bordered opacity-70 w-full"
+          placeholder='Enter your photo URL'
+          required
+        />
       </div>
 
       {/* Suggestion */}

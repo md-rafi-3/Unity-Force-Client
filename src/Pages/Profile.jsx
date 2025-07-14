@@ -49,9 +49,30 @@ const Profile = () => {
 
   <input type="radio" name="my_tabs_3" className="tab" aria-label="Tab 2" defaultChecked />
   <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">
-  <Suspense fallback={<Loading></Loading>}>
+  {/* table start */}
+   <div className="overflow-x-auto">
+  <table className="table">
+    {/* head */}
+    <thead>
+      <tr>
+       
+        <th>Opportunity</th>
+        <th>Organizer</th>
+        
+        <th>Deadline</th>
+        <th>Status</th>
+       
+        <th >Actions</th>
+      </tr>
+    </thead>
+    <Suspense fallback={<Loading></Loading>}>
    <MyApplications myApplicationsPromise={myApplicationsPromise(user?.email)}></MyApplications>
   </Suspense>
+    {/* foot */}
+   
+  </table>
+</div>
+{/* table end */}
   </div>
 
   
