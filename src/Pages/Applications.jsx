@@ -36,7 +36,9 @@ const Applications = () => {
     }
     return (
         <div className='max-w-7xl mx-auto'>
-            <div className="overflow-x-auto">
+
+          <h1 className='text-4xl text-center font-bold mt-4 text-primary'>Post <span className='text-secondary'> Applications</span></h1>
+            <div className="overflow-x-auto mt-10">
   <table className="table">
     {/* head */}
     <thead>

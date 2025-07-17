@@ -12,6 +12,7 @@ import Profile from '../Pages/Profile';
 import Error from '../Pages/Error';
 import PrivetRoute from '../PrivetRoute/PrivetRoute';
 import Applications from '../Pages/Applications';
+import UpdatePost from '../Pages/UpdatePost';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,12 @@ const router = createBrowserRouter([
           path:"applications/:id",
           element:<PrivetRoute><Applications></Applications></PrivetRoute>,
           loader:({params})=>fetch(`http://localhost:3000/applications/post/${params.id}`),
+          hydrateFallbackElement:<Loading></Loading>
+        },
+        {
+          path:"updatePost/:id",
+          element:<PrivetRoute><UpdatePost></UpdatePost></PrivetRoute>,
+          loader:({params})=>fetch(`http://localhost:3000/allPosts/${params.id}`),
           hydrateFallbackElement:<Loading></Loading>
         },
         {

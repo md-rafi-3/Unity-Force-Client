@@ -18,8 +18,8 @@ const Profile = () => {
 
             {/* tab */}
 
-      <div className="tabs tabs-lift">
-  <input type="radio" name="my_tabs_3" className="tab" aria-label="Manage my posts" />
+      <div className="tabs tabs-lift mt-10">
+  <input type="radio" name="my_tabs_3" className="tab" aria-label="My Posts" />
   <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">
    {/* table start */}
    <div className="overflow-x-auto">
@@ -47,7 +47,7 @@ const Profile = () => {
 {/* table end */}
   </div>
 
-  <input type="radio" name="my_tabs_3" className="tab" aria-label="Tab 2" defaultChecked />
+  <input type="radio" name="my_tabs_3" className="tab" aria-label="My Requests" defaultChecked />
   <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">
   {/* table start */}
    <div className="overflow-x-auto">

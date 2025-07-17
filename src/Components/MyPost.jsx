@@ -87,7 +87,7 @@ const MyPost = ({myPostsPromise}) => {
         <td >
   <div className="join">
             
-  <button className="btn btn-xs btn-primary join-item"><FaEdit /> Edit</button>
+  <Link to={`/updatePost/${post._id}`}><button className="btn btn-xs btn-primary join-item"><FaEdit /> Edit</button></Link>
  <Link to={`/postDetails/${post._id}`}> <button className="btn btn-xs btn-secondary join-item"><FaEye />View</button></Link>
  <Link to={`/applications/${post._id}`}> <button className="btn btn-xs join-item btn-primary"><FaList />Applications</button></Link>
   <button onClick={()=>handledelete(post._id)} className="btn btn-xs join-item btn-secondary"><MdDelete />
