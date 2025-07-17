@@ -11,7 +11,7 @@ const MyApplications = ({myApplicationsPromise}) => {
     const [applications,setApplications]=useState(myApplicationsData)
 
 
-    const handleDelete=(id)=>{
+    const handleDelete=(id,postId)=>{
         Swal.fire({
   title: "Are you sure?",
   text: "You won't be able to revert this!",
@@ -22,9 +22,9 @@ const MyApplications = ({myApplicationsPromise}) => {
   confirmButtonText: "Yes, delete it!"
 }).then((result) => {
   if (result.isConfirmed) {
-    axios.delete(`http://localhost:3000/applications/${id}`).then(res=>{
+    axios.delete(`http://localhost:3000/applications/${id}`,{data: { postId }}).then(res=>{
         console.log(res.data)
-        if(res.data.deletedCount){
+        if(res.data?.updatePost?.modifiedCount){
             Swal.fire({
       title: "Deleted!",
       text: "Your file has been deleted.",
@@ -104,7 +104,7 @@ const MyApplications = ({myApplicationsPromise}) => {
   
  <Link to={`/postDetails/${application._id}`}> <button className="btn btn-xs btn-primary join-item"><FaEye/>View</button></Link>
 
-  <button onClick={()=>handleDelete(application._id)}  className="btn btn-xs join-item btn-secondary"><MdCancel />
+  <button onClick={()=>handleDelete(application._id,application.postId)}  className="btn btn-xs join-item btn-secondary"><MdCancel />
 Cancel</button>
   </div>
 
