@@ -81,8 +81,23 @@ const MyApplications = ({myApplicationsPromise}) => {
               year: 'numeric',
             })}</td>
         
-        <td><button className={`badge badge-soft ${application.status==="approved"?"badge-success":" badge-warning"}`}>{application.status==="approved"?"Approved":"Pending"}</button></td>
-        
+        <td>
+  <button
+    className={`badge badge-soft ${
+      application.status === "approved"
+        ? "badge-success"
+        : application.status === "pending"
+        ? "badge-warning"
+        : "badge-error"
+    }`}
+  >
+    {application.status === "approved"
+      ? "Approved"
+      : application.status === "pending"
+      ? "Pending"
+      : "Rejected"}
+  </button>
+</td>
         <td >
   <div className="join">
             

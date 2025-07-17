@@ -1,9 +1,39 @@
+import axios from 'axios';
 import React from 'react';
 import { useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Applications = () => {
     const applicantsData=useLoaderData()
     console.log(applicantsData)
+
+    const handleStatusUpdate=(e,applicantId)=>{
+       e.preventDefault()
+       const status=e.target.value;
+       console.log(status,applicantId)
+
+      //  update status
+      axios.patch(`http://localhost:3000/applications/status/${applicantId}`,{status}).then(res=>{
+        console.log(res.data);
+        if(res.data.modifiedCount){
+          Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your work has been saved",
+  showConfirmButton: false,
+  timer: 1500
+});
+        }
+      }).catch(error=>{
+         Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
+      })
+    }
     return (
         <div className='max-w-7xl mx-auto'>
             <div className="overflow-x-auto">
@@ -15,9 +45,10 @@ const Applications = () => {
           No.
         </th>
         <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
+        <th>Requested Post</th>
+        <th>Requeste Date</th>
+        <th>Status</th>
+        <th>Update status</th>
       </tr>
     </thead>
     <tbody>
@@ -32,24 +63,51 @@ const Applications = () => {
             <div className="avatar">
               <div className="mask mask-squircle h-12 w-12">
                 <img
-                  src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                  alt="Avatar Tailwind CSS Component" />
+                  src={applicants?.volunteerPhotoURl}
+                  alt={applicants.title} />
               </div>
             </div>
             <div>
-              <div className="font-bold">Hart Hagerty</div>
-              <div className="text-sm opacity-50">United States</div>
+              <div className="font-bold">{applicants.volunteerName}</div>
+              <div className="text-sm opacity-50">{applicants.volunteerEmail}</div>
             </div>
           </div>
         </td>
         <td>
-          Zemlak, Daniel and Leannon
+          {applicants.title}
           <br />
-          <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+          <span >{applicants.location}</span>
         </td>
-        <td>Purple</td>
+
+         <td> {new Date(applicants.requestDate).toLocaleDateString('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })}</td>
+       <td>
+  <button
+    className={`badge badge-soft ${
+      applicants.status === "approved"
+        ? "badge-success"
+        : applicants.status === "pending"
+        ? "badge-warning"
+        : "badge-error"
+    }`}
+  >
+    {applicants.status === "approved"
+      ? "Approved"
+      : applicants.status === "pending"
+      ? "Pending"
+      : "Rejected"}
+  </button>
+</td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+          <select onChange={(e)=>handleStatusUpdate(e,applicants._id)} name="status" className="select select-bordered w-full" defaultValue={applicants.status} required>
+              <option value="">Update status</option>
+              <option value="pending">Pending</option>
+              <option value="approved">Approve</option>
+              <option value="rejected">Reject</option>
+            </select>
         </th>
       </tr>
       ))}
