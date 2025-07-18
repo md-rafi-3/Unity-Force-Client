@@ -6,12 +6,14 @@ import { TbLockPassword } from 'react-icons/tb';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import loginLottie from '../assets/login.json';
 import Lottie from 'lottie-react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthConrext';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const {userLogin,googleLogin}=useContext(AuthContext)
+  const location=useLocation()
+  const navigate=useNavigate()
   const handleLogin=(e)=>{
     e.preventDefault()
     const email=e.target.email.value;
@@ -19,6 +21,9 @@ const Login = () => {
     console.log(email,password)
     userLogin(email,password).then((result) => {
       console.log(result.user)
+     setTimeout(() => {
+        navigate(`${location.state ? location.state : "/"}`)
+      }, 1300)
     }).catch((error) => {
       console.log(error.message)
     })
@@ -28,6 +33,9 @@ const Login = () => {
    const handleGoogleLogin=()=>{
        googleLogin().then(result=>{
         console.log(result.user)
+         setTimeout(() => {
+        navigate(`${location.state ? location.state : "/"}`)
+      }, 1300)
        }).catch((error) => {
         console.log(error.message)
        })

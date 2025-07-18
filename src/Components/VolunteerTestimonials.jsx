@@ -75,7 +75,10 @@ const testimonials = [
 
 const VolunteerTestimonials = () => {
   return (
-    <div className="py-10 px-3 max-w-7xl mx-auto">
+    <div data-aos="fade-up"
+          data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-delay={200} className="py-10 px-3 max-w-7xl mx-auto">
       <h2 className="text-4xl font-bold text-center mb-2">What Our Volunteers Say</h2>
       <p className="text-center text-gray-500 mb-6 text-lg">
         Real stories from people making a difference in their communities.

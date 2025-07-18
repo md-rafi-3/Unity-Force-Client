@@ -50,7 +50,7 @@ const Footer = () => {
     <footer className="bg-base-100 border-gray-300/40 dark:border-gray-600/40  p-10 mt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 ">
         {/* Brand Info */}
-        <div>
+        <div >
          <a className=" font-bold text-2xl flex items-center "><span className='text-primary mr-1'><FaHandHoldingHeart size={28} /></span>Unity <span className='text-primary '>Force</span></a>
           <p className="text-sm mt-2 ">
             Connecting hearts and hands. Join us to make a difference in communities around the world.

@@ -77,11 +77,8 @@ const MyPost = ({myPostsPromise}) => {
           <button className={`badge badge-soft ${post.status==="active"?"badge-success":" badge-warning"}`}>{post.status==="active"?"Active":"Closed"}</button>
         </td>
          
-         <td>
-            4/6 volunteers
-            
-            <br />
-            <progress className="progress progress-success w-56" value={1} max="100"></progress>
+         <td className='text-center'>
+           {post.volunteersNeeded}
          </td>
 
         <td >

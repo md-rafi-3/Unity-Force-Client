@@ -32,11 +32,12 @@ const AddPost = () => {
     // Format deadline
     if (deadline) {
       data.deadline = deadline.toISOString().split("T")[0]; 
+      
     }
 
      if (data?.volunteersNeeded) {
   data.volunteersNeeded = parseInt(data.volunteersNeeded);
-  
+ 
 }
 console.log(data)
 

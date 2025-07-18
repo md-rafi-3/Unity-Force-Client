@@ -6,7 +6,7 @@ import { TbLockPassword } from 'react-icons/tb';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import signUpLottie from '../assets/signUp.json';
 import Lottie from 'lottie-react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { IoMdPhotos } from 'react-icons/io';
 import { AuthContext } from '../Context/AuthConrext';
 import Swal from 'sweetalert2';
@@ -15,6 +15,8 @@ const SignUp = () => {
   const {createUser,updateUser,googleLogin}=useContext(AuthContext)
   console.log(createUser)
   const [showPassword, setShowPassword] = useState(false);
+  const location=useLocation()
+  const navigate=useNavigate()
   const handleSignUp=(e)=>{
     e.preventDefault()
     const name=e.target.name.value;
@@ -26,6 +28,45 @@ const SignUp = () => {
       displayName: name,
       photoURL: photoURL
     }
+
+     
+     // validation
+    const upperCaseExp = /[A-Z]/.test(password);
+    const lowerCaseExp = /[a-z]/.test(password);
+    const lengthExp = password.length >= 6;
+
+
+    if (!lengthExp) {
+      Swal.fire({
+        title: "Password must be at least 6 characters long.",
+        icon: "error",
+        draggable: true
+      });
+      return;
+    }
+
+    if (!upperCaseExp) {
+
+      Swal.fire({
+        title: "Password must contain at least one uppercase letter.",
+        icon: "error",
+        draggable: true
+      });
+      return;
+    }
+    if (!lowerCaseExp) {
+      Swal.fire({
+        title: "Password must contain at least one lowercase letter.",
+        icon: "error",
+        draggable: true
+      });
+      return;
+    }
+
+
+
+
+
     createUser(email,password).then((result) => {
       console.log(result.user)
       updateUser(updatedData).then(() => {
@@ -36,6 +77,9 @@ const SignUp = () => {
   showConfirmButton: false,
   timer: 1500
 });
+ setTimeout(() => {
+        navigate(`${location.state ? location.state : "/"}`)
+      }, 1300);
       }).catch((error) => {
         console.log(error.message)
       })
@@ -49,6 +93,9 @@ const SignUp = () => {
   const handleGoogleLogin=()=>{
        googleLogin().then(result=>{
         console.log(result.user)
+         setTimeout(() => {
+        navigate(`${location.state ? location.state : "/"}`)
+      }, 1300)
        }).catch((error) => {
         console.log(error.message)
        })

@@ -34,9 +34,12 @@ const stats = [
 
 const CountDown = () => {
   return (
-    <section className="bg-base-100 py-16 px-4">
+    <section data-aos="fade-up"
+          data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-delay={200} className="bg-base-100 py-16 px-4">
      
-      <div className="text-center mb-10">
+      <div className="text-center mb-10 px-3">
         <h2 className="text-4xl font-bold text-base-300 mb-2">Our Impact in Numbers</h2>
         <p className="text-gray-500 text-l">
           Here's a quick look at how we're making a difference together.
@@ -46,7 +49,10 @@ const CountDown = () => {
  
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat) => (
-          <div key={stat.id} className="flex flex-col items-center space-y-3">
+          <div data-aos="fade-up"
+          data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-delay={200} key={stat.id} className="flex flex-col items-center space-y-3">
             <div className="bg-primary text-white p-3 rounded-md">{stat.icon}</div>
             <h3 className="text-3xl font-bold text-base-300">
               <CountUp end={stat.value} suffix='+' enableScrollSpy></CountUp>

@@ -32,7 +32,7 @@ const Profile = () => {
         
         <th>Deadline</th>
         <th>Status</th>
-        <th className='text-center'>Progress</th>
+        <th className='text-center'>Volunteers Needed</th>
         <th className='text-center'>Actions</th>
       </tr>
     </thead>
@@ -66,7 +66,7 @@ const Profile = () => {
       </tr>
     </thead>
     <Suspense fallback={<Loading></Loading>}>
-   <MyApplications myApplicationsPromise={myApplicationsPromise(user?.email)}></MyApplications>
+   <MyApplications myApplicationsPromise={myApplicationsPromise(user?.email,user.accessToken)}></MyApplications>
   </Suspense>
     {/* foot */}
    

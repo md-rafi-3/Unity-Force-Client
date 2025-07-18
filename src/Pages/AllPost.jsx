@@ -99,11 +99,12 @@ const AllPost = () => {
     {/* head */}
     <thead>
       <tr>
-        
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
+        <th>No.</th>
+        <th>Opportunity</th>
+        <th>Deadline</th>
+        <th>Volunteers Needed</th>
+        <th>Category</th>
+        <th>Details</th>
       </tr>
     </thead>
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { MdLogin, MdOutlineLogin } from 'react-icons/md';
 import DarkMode from './DarkMode';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import { FaHandHoldingHeart, FaRegEdit, FaRegUser } from 'react-icons/fa';
 import { IoHomeOutline, IoSearchOutline } from 'react-icons/io5';
 import { AuthContext } from '../Context/AuthConrext';
@@ -11,7 +11,7 @@ import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
   const {user,userSignOut}=useContext(AuthContext)
-
+  const navigate=useNavigate()
   console.log(user)
    const handleSignOut=()=>{
     userSignOut().then(() => {
@@ -22,6 +22,8 @@ const Navbar = () => {
   showConfirmButton: false,
   timer: 1500
 });
+
+   setTimeout(()=>navigate("/login"),1500)
     }).catch((error) => {
       console.log(error.message)
     })

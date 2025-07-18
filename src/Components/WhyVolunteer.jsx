@@ -53,7 +53,10 @@ const glowVariants = {
 
 const BenefitsSection = () => {
   return (
-    <section className="py-16 px-3 max-w-7xl mx-auto bg-base-100 text-base-content">
+    <section data-aos="fade-up"
+          data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-delay={200} className="py-16 px-3 max-w-7xl mx-auto bg-base-100 text-base-content">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl text-base-300 font-bold mb-3 ">
           Why Volunteer With Us?
@@ -70,6 +73,12 @@ const BenefitsSection = () => {
             variants={glowVariants}
             animate="animate"
             whileHover={{ scale: 1.025 }}
+
+            data-aos="fade-up"
+          data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-delay={200}
+        
             className="bg-white dark:bg-base-200 p-6 rounded-xl shadow border border-gray-300 dark:border-gray-700 text-center"
           >
            <div className='flex justify-center items-center'> {benefit.icon}</div>

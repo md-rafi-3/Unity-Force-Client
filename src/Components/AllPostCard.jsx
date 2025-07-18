@@ -6,9 +6,15 @@ const AllPostCard = ({allPostPromise}) => {
     const allPostData=use(allPostPromise)
     console.log(allPostData)
     return (
-        <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
+        <div data-aos="fade-up"
+          data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-delay={200} className='grid grid-cols-1 md:grid-cols-3 gap-5'>
 
-            {allPostData.map(post=>(<div className="text-white border border-gray-300/40 dark:border-gray-600/40 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-2xl  group">
+            {allPostData.map(post=>(<div data-aos="fade-up"
+          data-aos-duration="800"
+        data-aos-once="false"
+        data-aos-delay={200} className="text-white border border-gray-300/40 dark:border-gray-600/40 rounded-lg overflow-hidden shadow-lg transform transition duration-300 hover:-translate-y-1 hover:shadow-2xl  group">
                   {/* Image */}
                   <div className="overflow-hidden">
                     <img
