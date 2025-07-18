@@ -39,7 +39,7 @@ const AllPostsTable = ({allPostPromise}) => {
 
         <td > <div className='flex items-center gap-1'><FaUsers className="text-primary"/>{post.volunteersNeeded}</div></td>
 
-        <td><div className='badge badge-primary text-white'>{post.category}</div></td>
+        <td><div className='badge badge-secondary text-white'>{post.category}</div></td>
         <th>
          <Link to={`/postDetails/${post._id}`}> <button className="btn  btn-xs btn-primary"><TbListDetails />Details</button></Link>
         </th>

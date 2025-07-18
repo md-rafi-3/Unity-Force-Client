@@ -19,7 +19,7 @@ const Profile = () => {
             {/* tab */}
 
       <div className="tabs tabs-lift mt-10">
-  <input type="radio" name="my_tabs_3" className="tab" aria-label="My Posts" />
+  <input type="radio" name="my_tabs_3" className="tab" aria-label="My Posts" defaultChecked  />
   <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">
    {/* table start */}
    <div className="overflow-x-auto">
@@ -27,7 +27,7 @@ const Profile = () => {
     {/* head */}
     <thead>
       <tr>
-       
+         <th>No.</th>
         <th>Opportunity</th>
         
         <th>Deadline</th>
@@ -37,7 +37,7 @@ const Profile = () => {
       </tr>
     </thead>
      <Suspense fallback={<Loading></Loading>}>
-        <MyPost myPostsPromise={myPostsPromise(user?.email)}></MyPost>
+        <MyPost myPostsPromise={myPostsPromise(user?.email,user.accessToken)}></MyPost>
     </Suspense>
    
     {/* foot */}
@@ -47,7 +47,7 @@ const Profile = () => {
 {/* table end */}
   </div>
 
-  <input type="radio" name="my_tabs_3" className="tab" aria-label="My Requests" defaultChecked />
+  <input type="radio" name="my_tabs_3" className="tab" aria-label="My Requests" />
   <div className="tab-content bg-base-100 border border-gray-300/40 dark:border-gray-600/40 p-6">
   {/* table start */}
    <div className="overflow-x-auto">

@@ -50,7 +50,8 @@ const MyPost = ({myPostsPromise}) => {
     }
     return (
         <tbody>
-            {myPosts.map(post=>( <tr>
+            {myPosts.map((post,index)=>( <tr>
+           <td>{index+1}</td>
         
         <td>
           <div className="flex items-center gap-3">
