@@ -14,19 +14,42 @@ const Navbar = () => {
   const navigate=useNavigate()
   console.log(user)
    const handleSignOut=()=>{
+    
+   Swal.fire({
+  title: "Are you sure?",
+  text: "You will be logged out from your account.",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, log me out!",
+  cancelButtonText: "Cancel"
+}).then((result) => {
+  if (result.isConfirmed) {
     userSignOut().then(() => {
       Swal.fire({
   position: "center",
   icon: "success",
-  title: "Your work has been saved",
+  title: "Logged Out Successfully!",
   showConfirmButton: false,
   timer: 1500
 });
 
    setTimeout(()=>navigate("/login"),1500)
     }).catch((error) => {
-      console.log(error.message)
+        Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
     })
+  }
+});
+
+
+    
    }
     const links=<>
     <li><NavLink to="/" className={({ isActive }) =>

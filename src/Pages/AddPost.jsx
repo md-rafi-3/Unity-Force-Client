@@ -59,8 +59,13 @@ console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
         }
       })
       .catch((error) => {
-        console.error(error.message);
-        Swal.fire("Error!", "Something went wrong.", "error");
+        Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
       });
   };
 

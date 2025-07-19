@@ -47,12 +47,26 @@ const Login = () => {
 
    const handleGoogleLogin=()=>{
        googleLogin().then(result=>{
-        console.log(result.user)
-         setTimeout(() => {
+        if(result?.user){
+      Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Login Successful!",
+  showConfirmButton: false,
+  timer: 1500
+});
+     
+     setTimeout(() => {
         navigate(`${location.state ? location.state : "/"}`)
-      }, 1300)
+      }, 1300)}
        }).catch((error) => {
-        console.log(error.message)
+          Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
        })
   }
 

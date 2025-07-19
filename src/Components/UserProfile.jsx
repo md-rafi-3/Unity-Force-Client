@@ -21,13 +21,14 @@ const UserProfile = () => {
 
       
     updateUser(updatedData).then(()=>{
-      Swal.fire({
+     Swal.fire({
   position: "center",
   icon: "success",
-  title: "Your work has been saved",
+  title: "Profile updated successfully!",
   showConfirmButton: false,
   timer: 1500
 });
+
 
 setTimeout(
    navigate(0) 

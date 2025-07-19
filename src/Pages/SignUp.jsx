@@ -69,35 +69,70 @@ const SignUp = () => {
 
     createUser(email,password).then((result) => {
       console.log(result.user)
-      updateUser(updatedData).then(() => {
+      if(result?.user){
+        updateUser(updatedData).then(() => {
+       
         Swal.fire({
   position: "center",
   icon: "success",
-  title: "Your work has been saved",
+  title: "Your account has been created successfully.",
   showConfirmButton: false,
   timer: 1500
 });
+
  setTimeout(() => {
         navigate(`${location.state ? location.state : "/"}`)
       }, 1300);
+      
       }).catch((error) => {
-        console.log(error.message)
+          Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
       })
+      }
       
 
     }).catch((error) => {
-      console.log(error.message)
+       Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
     })
   }
 
   const handleGoogleLogin=()=>{
        googleLogin().then(result=>{
         console.log(result.user)
-         setTimeout(() => {
+        if(result?.user){
+          
+        Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Your account has been created successfully.",
+  showConfirmButton: false,
+  timer: 1500
+});
+
+ setTimeout(() => {
         navigate(`${location.state ? location.state : "/"}`)
       }, 1300)
+        }
+        
        }).catch((error) => {
-        console.log(error.message)
+          Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
        })
   }
 

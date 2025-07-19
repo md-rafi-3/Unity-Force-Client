@@ -59,20 +59,25 @@ const UpdatePost = () => {
       .then((res) => {
         console.log(res.data)
         if (res.data.modifiedCount) {
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Volunteer post created!",
-            showConfirmButton: false,
-            timer: 1500
-          });
+         Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Volunteer post updated!",
+  showConfirmButton: false,
+  timer: 1500
+});
           form.reset();
           setDeadline(null);
         }
       })
       .catch((error) => {
-        console.error(error.message);
-        Swal.fire("Error!", "Something went wrong.", "error");
+        Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
       });
   };
 
