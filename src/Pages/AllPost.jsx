@@ -12,7 +12,7 @@ const AllPost = () => {
     const [view, setView] = useState('grid');
     const [searchText, setSearchText] = useState("");
     
-    console.log(category,searchText)
+    // console.log(category,searchText)
 
 
     return (

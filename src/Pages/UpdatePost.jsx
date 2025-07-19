@@ -54,11 +54,11 @@ const UpdatePost = () => {
       data.volunteersNeeded = parseInt(data.volunteersNeeded);
     }
 
-    console.log(data);
+    // console.log(data);
 
     axios.put(`http://localhost:3000/allPosts/update/${_id}`, {data})
       .then((res) => {
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.modifiedCount) {
          Swal.fire({
   position: "center",

@@ -14,7 +14,7 @@ import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
   const {createUser,updateUser,googleLogin}=useContext(AuthContext)
-  console.log(createUser)
+  // console.log(createUser)
   const [showPassword, setShowPassword] = useState(false);
   const location=useLocation()
   const navigate=useNavigate()
@@ -24,7 +24,7 @@ const SignUp = () => {
     const photoURL=e.target.photoURL.value;
     const email=e.target.email.value;
     const password=e.target.password.value;
-    console.log({name,photoURL,email,password})
+    // console.log({name,photoURL,email,password})
     const updatedData={
       displayName: name,
       photoURL: photoURL
@@ -69,7 +69,7 @@ const SignUp = () => {
 
 
     createUser(email,password).then((result) => {
-      console.log(result.user)
+      // console.log(result.user)
       if(result?.user){
         updateUser(updatedData).then(() => {
        
@@ -110,7 +110,7 @@ const SignUp = () => {
 
   const handleGoogleLogin=()=>{
        googleLogin().then(result=>{
-        console.log(result.user)
+        // console.log(result.user)
         if(result?.user){
           
         Swal.fire({

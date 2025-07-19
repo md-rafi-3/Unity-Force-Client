@@ -25,7 +25,7 @@ const PostDetails = () => {
         e.preventDefault()
         const form=e.target;
         const formData = new FormData(form);
-        console.log(formData)
+        // console.log(formData)
     const data = Object.fromEntries(formData.entries());
          data.postId=_id 
          data.status="pending"
@@ -33,14 +33,14 @@ const PostDetails = () => {
           
          if (data?.volunteersNeeded) {
   data.volunteersNeeded = parseInt(data.volunteersNeeded);}
-        console.log(data)
+        // console.log(data)
 
-        console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
+        // console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
 
         const requestedPostId=_id
 
         axios.post("http://localhost:3000/applications",{data, requestedPostId}).then(res=>{
-           console.log(res.data.updatePost.modifiedCount)
+          //  console.log(res.data.updatePost.modifiedCount)
            if(res.data.updatePost.modifiedCount){
             Swal.fire({
   position: "center",
@@ -60,7 +60,7 @@ document.getElementById("volunteer_modal").close()
         }).catch((error) => {
               document.getElementById("volunteer_modal").close()
             if(error.status===409){
-                  console.log(error)
+                  // console.log(error)
           
             Swal.fire({
   position: "center",

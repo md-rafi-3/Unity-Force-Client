@@ -40,9 +40,9 @@ const AddPost = () => {
   data.volunteersNeeded = parseInt(data.volunteersNeeded);
  
 }
-console.log(data)
+// console.log(data)
 
-console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
+// console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
    
 
     axios.post("http://localhost:3000/allPosts", data)
