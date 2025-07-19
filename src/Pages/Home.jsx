@@ -25,7 +25,7 @@ const Home = () => {
                 <h1 className='text-4xl text-base-300 text-center font-bold'>Volunteer Needs Now</h1>
                 <p className='text-lg  text-gray-500 text-center '>These opportunities are available right now. Find one that inspires you!</p>
                 <div className='grid mt-12 grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
-                    {postsData.map(post=><PostsCard post={post}></PostsCard>)}
+                    {postsData.map(post=><PostsCard key={post._id} post={post}></PostsCard>)}
                 </div>
 
               <div className='flex items-center justify-center mt-5'>
