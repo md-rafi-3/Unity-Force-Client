@@ -1,5 +1,5 @@
 export const myPostsPromise=(email,accessToken)=>{
-    return fetch(`http://localhost:3000/myPosts?email=${email}`,{
+    return fetch(`https://unity-force-server-nine.vercel.app/myPosts?email=${email}`,{
          headers:{
             authorization: `Bearer ${accessToken}`
         }

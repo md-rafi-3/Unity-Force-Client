@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children:[
         {index:true,
             element:<Home></Home>,
-            loader:()=>fetch("http://localhost:3000/allPosts"),
+            loader:()=>fetch("https://unity-force-server-nine.vercel.app/allPosts"),
             hydrateFallbackElement:<Loading></Loading>
         },
         {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
         {
           path:"postDetails/:id",
           element:<PrivetRoute><PostDetails></PostDetails></PrivetRoute>,
-          loader:({params})=>fetch(`http://localhost:3000/allPosts/${params.id}`),
+          loader:({params})=>fetch(`https://unity-force-server-nine.vercel.app/allPosts/${params.id}`),
           hydrateFallbackElement:<Loading></Loading>
         },
         {
@@ -46,13 +46,13 @@ const router = createBrowserRouter([
         {
           path:"applications/:id",
           element:<PrivetRoute><Applications></Applications></PrivetRoute>,
-          loader:({params})=>fetch(`http://localhost:3000/applications/post/${params.id}`),
+          loader:({params})=>fetch(`https://unity-force-server-nine.vercel.app/applications/post/${params.id}`),
           hydrateFallbackElement:<Loading></Loading>
         },
         {
           path:"updatePost/:id",
           element:<PrivetRoute><UpdatePost></UpdatePost></PrivetRoute>,
-          loader:({params})=>fetch(`http://localhost:3000/allPosts/${params.id}`),
+          loader:({params})=>fetch(`https://unity-force-server-nine.vercel.app/allPosts/${params.id}`),
           hydrateFallbackElement:<Loading></Loading>
         },
         {

@@ -1,5 +1,5 @@
 export const allPostPromise = (category, search) => {
-  let url = "http://localhost:3000/allPosts";
+  let url = "https://unity-force-server-nine.vercel.app/allPosts";
 
   const queries = [];
   if (category && category !== "") {
