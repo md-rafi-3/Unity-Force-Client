@@ -9,6 +9,7 @@ import Lottie from 'lottie-react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthConrext';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -72,6 +73,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
+       <Helmet>
+                      <title>Unity-Force || Login</title>
+                  </Helmet>
       <div className="bg-base-200 border border-gray-300/40 dark:border-gray-600/40 shadow-xl rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
        
         <div className="p-6 flex items-center justify-center">

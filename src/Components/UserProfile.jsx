@@ -15,7 +15,7 @@ const UserProfile = () => {
       displayName,
       photoURL
      }
-     console.log(updatedData)
+    //  console.log(updatedData)
       
       
 

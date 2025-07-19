@@ -10,6 +10,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { IoMdPhotos } from 'react-icons/io';
 import { AuthContext } from '../Context/AuthConrext';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
   const {createUser,updateUser,googleLogin}=useContext(AuthContext)
@@ -138,6 +139,9 @@ const SignUp = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4">
+       <Helmet>
+                      <title>Unity-Force || SignUp</title>
+                  </Helmet>
       <div className="bg-base-200 border border-gray-300/40 dark:border-gray-600/40 shadow-xl rounded-3xl overflow-hidden max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
         {/* Left Image Section */}
         <div className="p-6 flex items-center justify-center">

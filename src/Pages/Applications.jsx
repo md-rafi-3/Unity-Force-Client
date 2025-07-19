@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import Lottie from 'lottie-react';
 import noDataLottie from '../assets/No-Data.json';
+import { Helmet } from 'react-helmet-async';
 
 const Applications = () => {
   const applicantsData = useLoaderData();
@@ -37,6 +38,9 @@ const Applications = () => {
 
   return (
     <div className='max-w-7xl mx-auto'>
+       <Helmet>
+                      <title>Unity-Force || Applications</title>
+                  </Helmet>
       <h1 className='text-4xl text-center font-bold mt-4 text-primary'>
         Post <span className='text-secondary'>Applications</span>
       </h1>

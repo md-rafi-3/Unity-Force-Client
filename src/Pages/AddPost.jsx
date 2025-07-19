@@ -17,6 +17,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthConrext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { Helmet } from "react-helmet-async";
 
 const AddPost = () => {
   const { user } = useContext(AuthContext);
@@ -71,6 +72,9 @@ console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 shadow-xl rounded-xl bg-base-200 border border-gray-300/40 dark:border-gray-600/40">
+       <Helmet>
+                <title>Unity-Force || Add-Post</title>
+            </Helmet>
       <h1 className="font-bold text-4xl justify-center mb-3 flex items-center">
         <span className="text-primary mr-1"><FaHandHoldingHeart size={23} /></span>
         Unity <span className="text-primary">Force</span>

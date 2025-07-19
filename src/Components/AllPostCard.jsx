@@ -6,7 +6,7 @@ import noDataLottie from '../assets/No-Data.json'; // ensure path is correct
 
 const AllPostCard = ({ allPostPromise }) => {
   const allPostData = use(allPostPromise);
-  console.log(allPostData);
+  // console.log(allPostData);
 
   if (!allPostData.length) {
     return (

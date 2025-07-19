@@ -4,6 +4,7 @@ import { FaEnvelope, FaUser, FaMapMarkerAlt, FaCalendarAlt, FaUsers, FaArrowLeft
 import { AuthContext } from '../Context/AuthConrext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const PostDetails = () => {
     const {user}=useContext(AuthContext)
@@ -39,8 +40,21 @@ const PostDetails = () => {
         const requestedPostId=_id
 
         axios.post("http://localhost:3000/applications",{data, requestedPostId}).then(res=>{
-           console.log(res.data)
-          document.getElementById("volunteer_modal").close()
+           console.log(res.data.updatePost.modifiedCount)
+           if(res.data.updatePost.modifiedCount){
+            Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Volunteer request submitted successfully!",
+  showConfirmButton: false,
+  timer: 1500,
+});
+
+
+document.getElementById("volunteer_modal").close()
+           }
+          
+          
             
             
         }).catch((error) => {
@@ -63,6 +77,9 @@ const PostDetails = () => {
     return (
        <div className="max-w-7xl mx-auto py-5  bg-base-100 px-3">
       {/* Left side: Main content */}
+       <Helmet>
+                      <title>Unity-Force || Post-Details</title>
+                  </Helmet>
       
      
         <button onClick={()=>navigate(-1)} className='btn btn-primary'><FaArrowLeft /> Back</button>

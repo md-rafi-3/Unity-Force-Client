@@ -4,6 +4,7 @@ import { allPostPromise } from '../Data/allPostApi';
 import AllPostCard from '../Components/AllPostCard';
 import Loading from '../Components/Loading';
 import AllPostsTable from '../Components/AllPostsTable';
+import { Helmet } from 'react-helmet-async';
 
 const AllPost = () => {
     const [category, setCategory] = useState("")
@@ -16,6 +17,9 @@ const AllPost = () => {
 
     return (
         <div className='max-w-7xl mx-auto px-3'>
+             <Helmet>
+                            <title>Unity-Force || All-Posts</title>
+                        </Helmet>
             <div className='mt-4'>
                 <h1 className='text-4xl text-center font-bold '>All Opportunities</h1>
                 <p  className='text-gray-600 text-center mt-2'>Find the perfect way to contribute to your community.</p>
@@ -108,7 +112,15 @@ const AllPost = () => {
       </tr>
     </thead>
 
-    <Suspense fallback={<Loading></Loading>}>
+    <Suspense  fallback={
+                  <tbody>
+                    <tr>
+                      <td colSpan="6" className="text-center py-10">
+                        <Loading />
+                      </td>
+                    </tr>
+                  </tbody>
+                }>
     <AllPostsTable allPostPromise={allPostPromise(category,searchText)}></AllPostsTable>
     </Suspense>
     

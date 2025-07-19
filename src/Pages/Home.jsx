@@ -6,6 +6,7 @@ import { FaArrowRight } from 'react-icons/fa';
 import WhyVolunteer from '../Components/WhyVolunteer';
 import VolunteerTestimonials from '../Components/VolunteerTestimonials';
 import CountDown from '../Components/CountDown';
+import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
@@ -13,6 +14,9 @@ const Home = () => {
     const postsData=postsAllData.slice(0, 6)
     return (
         <div>
+           <Helmet>
+                          <title>Unity-Force || Home</title>
+                      </Helmet>
             <Banner></Banner>
             <div data-aos="fade-up"
           data-aos-duration="800"

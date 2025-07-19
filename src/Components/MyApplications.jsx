@@ -26,6 +26,7 @@ const MyApplications = ({ myApplicationsPromise }) => {
         axios.delete(`http://localhost:3000/applications/${id}`, {
           data: { postId }
         }).then(res => {
+          // console.log(res.data)
           if (res.data?.updatePost?.modifiedCount) {
             Swal.fire({
               title: "Cancelled!",

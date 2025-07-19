@@ -12,7 +12,7 @@ import { Tooltip } from 'react-tooltip';
 const Navbar = () => {
   const {user,userSignOut}=useContext(AuthContext)
   const navigate=useNavigate()
-  console.log(user)
+  // console.log(user)
    const handleSignOut=()=>{
     
    Swal.fire({
