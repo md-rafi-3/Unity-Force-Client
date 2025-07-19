@@ -12,21 +12,21 @@ import { useState } from 'react';
 const slides = [
   {
     id: 1,
-    image: 'https://i.ibb.co/spXLn7m3/pexels-shvetsa-5029859.jpg',
+    image: 'https://i.ibb.co/Z6HbnN4T/pexels-rdne-6646944.jpg',
     title: 'Empower Your Community',
     subtitle: 'Lend a Hand. Uplift Lives.',
     cta: 'Start Volunteering',
   },
   {
     id: 2,
-    image: 'https://images.unsplash.com/photo-1584467735871-98efc07b7b29',
+    image: 'https://i.ibb.co/HfQqjcDT/pexels-shvetsa-5029919.jpg',
     title: 'Be Someone’s Hope',
     subtitle: 'Inspire, Act, Impact.',
     cta: 'Join the Cause',
   },
   {
     id: 3,
-    image: 'https://images.unsplash.com/photo-1605395722208-e52fc55b3d84',
+    image: 'https://i.ibb.co/zWzrJRmf/pexels-marta-ortigosa-1877261-3480494.jpg',
     title: 'Serve with Purpose',
     subtitle: 'Stand Together. Serve Together.',
     cta: 'Get Involved',

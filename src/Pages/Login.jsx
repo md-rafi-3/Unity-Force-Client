@@ -8,6 +8,7 @@ import loginLottie from '../assets/login.json';
 import Lottie from 'lottie-react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Context/AuthConrext';
+import Swal from 'sweetalert2';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -20,12 +21,26 @@ const Login = () => {
     const password=e.target.password.value;
     console.log(email,password)
     userLogin(email,password).then((result) => {
-      console.log(result.user)
+     if(result?.user){
+      Swal.fire({
+  position: "center",
+  icon: "success",
+  title: "Login Successful!",
+  showConfirmButton: false,
+  timer: 1500
+});
+     
      setTimeout(() => {
         navigate(`${location.state ? location.state : "/"}`)
-      }, 1300)
+      }, 1300)}
     }).catch((error) => {
-      console.log(error.message)
+     Swal.fire({
+  position: "center",
+  icon: "error",
+  title: error.message,
+  showConfirmButton: false,
+  timer: 1500
+});
     })
 
   }
