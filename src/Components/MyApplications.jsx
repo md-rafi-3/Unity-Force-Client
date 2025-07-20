@@ -23,7 +23,7 @@ const MyApplications = ({ myApplicationsPromise }) => {
       cancelButtonText: "No, keep it"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/applications/${id}`, {
+        axios.delete(`https://unity-force-server-nine.vercel.app/applications/${id}`, {
           data: { postId }
         }).then(res => {
           // console.log(res.data)

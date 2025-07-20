@@ -39,7 +39,7 @@ const PostDetails = () => {
 
         const requestedPostId=_id
 
-        axios.post("http://localhost:3000/applications",{data, requestedPostId}).then(res=>{
+        axios.post("https://unity-force-server-nine.vercel.app/applications",{data, requestedPostId}).then(res=>{
           //  console.log(res.data.updatePost.modifiedCount)
            if(res.data.updatePost.modifiedCount){
             Swal.fire({

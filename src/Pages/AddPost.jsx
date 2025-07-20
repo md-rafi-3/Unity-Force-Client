@@ -45,7 +45,7 @@ const AddPost = () => {
 // console.log(typeof data.volunteersNeeded, data.volunteersNeeded)
    
 
-    axios.post("http://localhost:3000/allPosts", data)
+    axios.post("https://unity-force-server-nine.vercel.app/allPosts", data)
       .then((res) => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -60,6 +60,7 @@ const AddPost = () => {
         }
       })
       .catch((error) => {
+        // console.log(error)
         Swal.fire({
   position: "center",
   icon: "error",

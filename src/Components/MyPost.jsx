@@ -23,7 +23,7 @@ const MyPost = ({ myPostsPromise }) => {
       cancelButtonText: "Cancel"
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/myPosts/${id}`)
+        axios.delete(`https://unity-force-server-nine.vercel.app/myPosts/${id}`)
           .then(res => {
             if (res.data.deletedCount) {
               Swal.fire({

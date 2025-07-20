@@ -13,7 +13,7 @@ const Applications = () => {
     e.preventDefault();
     const status = e.target.value;
 
-    axios.patch(`http://localhost:3000/applications/status/${applicantId}`, { status })
+    axios.patch(`https://unity-force-server-nine.vercel.app/applications/status/${applicantId}`, { status })
       .then(res => {
         if (res.data.modifiedCount) {
           Swal.fire({
