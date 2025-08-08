@@ -101,26 +101,6 @@ This will start the project on `http://localhost:5173`.
 
 ---
 
-## 🖥 Backend Setup (Optional if running server locally)
-
-```bash
-git clone https://github.com/your-username/Unity-Force-Server.git
-cd Unity-Force-Server
-npm install
-```
-
-Create `.env` in the server root:
-```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-FIREBASE_ADMIN_KEY=your_firebase_admin_sdk_json
-```
-
-Run the server:
-```bash
-npm start
-```
 
 ---
 
