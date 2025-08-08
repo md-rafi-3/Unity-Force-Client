@@ -1,18 +1,15 @@
-# 🌟 Unity-Force - স্বেচ্ছাসেবক ব্যবস্থাপনা ওয়েব অ্যাপ
+# 🌟 Unity-Force - Volunteer Management Web App
 
-**Unity-Force** হলো একটি সম্পূর্ণ ফিচারসমৃদ্ধ স্বেচ্ছাসেবক ব্যবস্থাপনা ওয়েব অ্যাপ্লিকেশন, যেখানে ইউজাররা স্বেচ্ছাসেবী প্রয়োজনীয়তা পোস্ট করতে পারে এবং অন্যান্য ইউজার সেই পোস্টে স্বেচ্ছাসেবক হতে আবেদন করতে পারে।
+**Unity-Force** is a fully-featured volunteer management web application where users can post volunteer opportunities, and other users can apply to become volunteers for those posts.
 
-🔗 **লাইভ সাইট:** [https://unity-foece.web.app](https://unity-foece.web.app)
-
-🔗 **সার্ভার লিংক (Vercel):**  
-[https://unity-force-server-nine.vercel.app](https://unity-force-server-nine.vercel.app)
+🔗 **Live Site:** [https://unity-foece.web.app](https://unity-foece.web.app)  
+🔗 **Server Link (Vercel):** [https://unity-force-server-nine.vercel.app](https://unity-force-server-nine.vercel.app)
 
 ---
 
-## 🚀 ব্যবহৃত প্রযুক্তি (Tech Stack)
+## 🚀 Tech Stack
 
-### ফ্রন্টএন্ড (Frontend)
-
+### Frontend
 - **React** `v19.1.0`
 - **Tailwind CSS** `v4.1.11`
 - **React Router DOM** `v7.6.3`
@@ -21,8 +18,7 @@
 - **React Helmet Async**, **React Icons**, **Axios**
 - **Swiper**, **React Datepicker**, **React CountUp**
 
-### ব্যাকএন্ড (Backend)
-
+### Backend
 - **Node.js**
 - **Express.js**
 - **MongoDB**
@@ -31,43 +27,101 @@
 
 ---
 
-## 🔐 প্রধান ফিচারসমূহ
+## 🔐 Key Features
 
-- 🔐 **ইউজার অথেন্টিকেশন**
-  - Firebase ইমেইল ও পাসওয়ার্ড ভিত্তিক লগইন/রেজিস্ট্রেশন
-  - JWT টোকেন ব্যবহার করে সিকিউর API
+- **User Authentication**
+  - Firebase email & password-based login/registration
+  - JWT token-secured APIs
 
-- 🏠 **হোম পেজ**
-  - ব্যানার, কাউন্টডাউন, টেস্টিমোনিয়াল সেকশন
+- **Home Page**
+  - Banner, countdown timer, testimonial section
 
-- 📄 **সব পোস্ট (All Posts) পেজ**
-  - সকল ভলান্টিয়ার পোস্ট দেখা যায়
-  - ক্যাটেগরি ফিল্টার এবং সার্চ সুবিধা
+- **All Posts Page**
+  - View all volunteer posts
+  - Category filter and search functionality
 
-- 📋 **পোস্ট বিস্তারিত পেজ**
-  - পোস্ট সম্পর্কিত সকল তথ্য দেখা যায়
-  - ভলান্টিয়ার হওয়ার জন্য আবেদন পাঠানো যায় (সিকিউর রুট)
+- **Post Details Page**
+  - See complete details about a post
+  - Apply to become a volunteer (secure route)
 
-- ➕ **নতুন পোস্ট যুক্ত করার পেজ**
-  - অথেন্টিকেটেড ইউজাররা পোস্ট করতে পারে
+- **Add New Post**
+  - Only authenticated users can post
 
-- 📌 **আমার পোস্টসমূহ (My Posts)**
-  - ইউজারের নিজের পোস্টগুলো দেখা, এডিট এবং ডিলিট করা যায়
+- **My Posts**
+  - View, edit, and delete your own posts
 
-- 📥 **আমার আবেদনসমূহ (My Requests)**
-  - ইউজার যেসব পোস্টে আবেদন করেছে সেগুলো দেখা যায়
+- **My Requests**
+  - View all posts you have applied for
 
-- 👤 **প্রোফাইল পেজ**
-  - ইউজার ইনফো দেখা ও লগআউট
+- **Profile Page**
+  - View user information and log out
 
-- 🔒 **প্রাইভেট রাউটস**
-  - Add Post, My Posts, My Requests, Post Details, Profile - সবগুলো প্রাইভেট রাউট
+- **Private Routes**
+  - Add Post, My Posts, My Requests, Post Details, and Profile are all private routes
 
-- 🛡️ **JWT প্রটেক্টেড API**
+- **JWT-Protected APIs**
   - `GET /myPosts?email=user@example.com`
   - `GET /applications?email=user@example.com`
 
-- 📱 **রেসপনসিভ ডিজাইন**
-  - মোবাইল, ট্যাব এবং ডেস্কটপে সুন্দরভাবে কাজ করে
+- **Responsive Design**
+  - Works seamlessly on mobile, tablet, and desktop devices
 
----"# Unity-Force-Client" 
+---
+
+## ⚙️ Installation & Run Commands
+
+### 1️⃣ Clone the repository
+```bash
+git clone https://github.com/your-username/Unity-Force-Client.git
+cd Unity-Force-Client
+```
+
+### 2️⃣ Install dependencies
+```bash
+npm install
+```
+
+### 3️⃣ Set up environment variables
+Create a `.env.local` file in the project root and add:
+```env
+VITE_API_URL=https://your-server-url.com
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_firebase_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_firebase_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_firebase_sender_id
+VITE_FIREBASE_APP_ID=your_firebase_app_id
+```
+
+### 4️⃣ Run the development server
+```bash
+npm run dev
+```
+This will start the project on `http://localhost:5173`.
+
+---
+
+## 🖥 Backend Setup (Optional if running server locally)
+
+```bash
+git clone https://github.com/your-username/Unity-Force-Server.git
+cd Unity-Force-Server
+npm install
+```
+
+Create `.env` in the server root:
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+FIREBASE_ADMIN_KEY=your_firebase_admin_sdk_json
+```
+
+Run the server:
+```bash
+npm start
+```
+
+---
+
+✅ **You’re ready to go!** Open your browser and enjoy **Unity-Force** 🚀
