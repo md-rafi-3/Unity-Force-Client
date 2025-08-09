@@ -47,7 +47,7 @@ const CountDown = () => {
       </div>
 
  
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div className="max-w-11/12 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 text-center">
         {stats.map((stat) => (
           <div data-aos="fade-up"
           data-aos-duration="800"

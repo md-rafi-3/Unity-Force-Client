@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async';
 
 const AllPost = () => {
     const [category, setCategory] = useState("")
+    
  
     const [view, setView] = useState('grid');
     const [searchText, setSearchText] = useState("");
@@ -16,7 +17,7 @@ const AllPost = () => {
 
 
     return (
-        <div className='max-w-7xl mx-auto px-3'>
+        <div className='max-w-11/12 mx-auto px-3'>
              <Helmet>
                             <title>Unity-Force || All-Posts</title>
                         </Helmet>

@@ -75,7 +75,7 @@ document.getElementById("volunteer_modal").close()
     }
     
     return (
-       <div className="max-w-7xl mx-auto py-5  bg-base-100 px-3">
+       <div className="max-w-11/12 mx-auto py-5  bg-base-100 px-3">
       {/* Left side: Main content */}
        <Helmet>
                       <title>Unity-Force || Post-Details</title>

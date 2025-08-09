@@ -26,12 +26,12 @@ const UpdatePost = () => {
 
   const {
     category,
-   
+
     deadline: loadedDeadline,
     description,
     image,
     location,
-   
+
     status,
     title,
     volunteersNeeded,
@@ -56,37 +56,37 @@ const UpdatePost = () => {
 
     // console.log(data);
 
-    axios.put(`https://unity-force-server-nine.vercel.app/allPosts/update/${_id}`, {data})
+    axios.put(`https://unity-force-server-nine.vercel.app/allPosts/update/${_id}`,  data )
       .then((res) => {
         // console.log(res.data)
         if (res.data.modifiedCount) {
-         Swal.fire({
-  position: "center",
-  icon: "success",
-  title: "Volunteer post updated!",
-  showConfirmButton: false,
-  timer: 1500
-});
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Volunteer post updated!",
+            showConfirmButton: false,
+            timer: 1500
+          });
           form.reset();
           setDeadline(null);
         }
       })
       .catch((error) => {
         Swal.fire({
-  position: "center",
-  icon: "error",
-  title: error.message,
-  showConfirmButton: false,
-  timer: 1500
-});
+          position: "center",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
       });
   };
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 shadow-xl rounded-xl bg-base-200 border border-gray-300/40 dark:border-gray-600/40">
-       <Helmet>
-                      <title>Unity-Force || Update-Post</title>
-                  </Helmet>
+      <Helmet>
+        <title>Unity-Force || Update-Post</title>
+      </Helmet>
       <h1 className="font-bold text-4xl justify-center mb-3 flex items-center">
         <span className="text-primary mr-1"><FaHandHoldingHeart size={23} /></span>
         Unity <span className="text-primary">Force</span>
@@ -212,7 +212,7 @@ const UpdatePost = () => {
         </div>
 
         {/* Submit */}
-        <button  className="btn text-white btn-primary w-full mt-4">Update Volunteer Post</button>
+        <button className="btn text-white btn-primary w-full mt-4">Update Volunteer Post</button>
       </form>
     </div>
   );

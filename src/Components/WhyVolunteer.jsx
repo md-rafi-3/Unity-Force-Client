@@ -56,7 +56,7 @@ const BenefitsSection = () => {
     <section data-aos="fade-up"
           data-aos-duration="800"
         data-aos-once="false"
-        data-aos-delay={200} className="py-16 px-3 max-w-7xl mx-auto bg-base-100 text-base-content">
+        data-aos-delay={200} className="py-16 px-3 max-w-11/12 mx-auto bg-base-100 text-base-content">
       <div className="text-center mb-12">
         <h2 className="text-3xl md:text-4xl text-base-300 font-bold mb-3 ">
           Why Volunteer With Us?

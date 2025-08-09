@@ -37,7 +37,7 @@ const Applications = () => {
   };
 
   return (
-    <div className='max-w-7xl mx-auto'>
+    <div className='max-w-11/12 mx-auto'>
        <Helmet>
                       <title>Unity-Force || Applications</title>
                   </Helmet>
