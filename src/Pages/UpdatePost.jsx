@@ -56,7 +56,7 @@ const UpdatePost = () => {
 
     // console.log(data);
 
-    axios.put(`https://unity-force-server-nine.vercel.app/allPosts/update/${_id}`,  data )
+    axios.put(`https://unity-force-server-nine.vercel.app/allPosts/update/${_id}`, { data} )
       .then((res) => {
         // console.log(res.data)
         if (res.data.modifiedCount) {
