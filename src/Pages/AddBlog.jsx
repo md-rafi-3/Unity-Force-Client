@@ -1,4 +1,3 @@
-// src/components/AddBlog.jsx
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { FiPlus, FiMapPin, FiTag, FiUser, FiCalendar, FiFolder, FiImage } from "react-icons/fi";
