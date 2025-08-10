@@ -118,6 +118,8 @@ export default function AddBlog() {
 
     console.log(newBlog)
     newBlog.authorEmai=user.email;
+    newBlog.status="active";
+    newBlog.publishDate=new Date().toISOString().slice(0, 10)
 
     try {
       setLoading(true);
@@ -282,7 +284,7 @@ export default function AddBlog() {
         </div>
 
         {/* Volunteers */}
-        <div className="border rounded-md p-4">
+        <div className="border border-gray-300 rounded-md p-4">
           <div className="flex items-center justify-between mb-4">
             <h4 className="font-semibold text-lg">Volunteers</h4>
             <button
