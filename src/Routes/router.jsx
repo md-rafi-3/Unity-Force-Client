@@ -38,12 +38,12 @@ const router = createBrowserRouter([
         },
         {
           path:"blogs",
-           loader:()=>fetch("http://localhost:3000/all-blogs"),
+           loader:()=>fetch("https://unity-force-server-nine.vercel.app/all-blogs"),
           element:<BlogPage></BlogPage>
         },
         {
           path:"blog-details/:id",
-           loader:({params})=>fetch(`http://localhost:3000/blog/${params.id}`),
+           loader:({params})=>fetch(`https://unity-force-server-nine.vercel.app/blog/${params.id}`),
           element:<BlogDetails></BlogDetails>
         },
         {

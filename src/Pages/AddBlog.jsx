@@ -8,7 +8,7 @@ import { AuthContext } from "../Context/AuthConrext";
 
 export default function AddBlog() {
   const {user}=useContext(AuthContext)
-  const API_URL = "http://localhost:3000/add-blog";
+  const API_URL = "https://unity-force-server-nine.vercel.app/add-blog";
 
   const emptyVolunteer = { name: "", role: "", contact: "" };
 
