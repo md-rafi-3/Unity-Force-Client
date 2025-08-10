@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { use, useState } from 'react';
-import { FaEdit, FaEye, FaList } from 'react-icons/fa';
+import { FaEdit, FaEllipsisV, FaEye, FaList } from 'react-icons/fa';
 import { MdDelete } from 'react-icons/md';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
@@ -100,31 +100,56 @@ const MyPost = ({ myPostsPromise }) => {
             <td className="text-center">
               {post.volunteersNeeded}
             </td>
-            <td>
-              <div className="join">
-                <Link to={`/updatePost/${post._id}`}>
-                  <button className="btn btn-xs btn-primary join-item">
-                    <FaEdit /> Edit
-                  </button>
-                </Link>
-                <Link to={`/postDetails/${post._id}`}>
-                  <button className="btn btn-xs btn-secondary join-item">
-                    <FaEye /> View
-                  </button>
-                </Link>
-                <Link to={`/applications/${post._id}`}>
-                  <button className="btn btn-xs join-item btn-primary">
-                    <FaList /> Applications
-                  </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(post._id)}
-                  className="btn btn-xs join-item btn-secondary"
-                >
-                  <MdDelete /> Delete
-                </button>
-              </div>
-            </td>
+              <td align='center'>
+      <div className="dropdown dropdown-end">
+        {/* trigger */}
+        <label tabIndex={0} className="btn btn-ghost btn-sm">
+          <FaEllipsisV />
+        </label>
+
+        {/* dropdown content */}
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-48"
+        >
+          <li>
+            <Link
+              to={`/updatePost/${post._id}`}
+              className="flex items-center gap-2 px-2 py-1 hover:bg-gray-100 rounded"
+            >
+              <FaEdit /> <span>Edit</span>
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              to={`/postDetails/${post._id}`}
+              className="flex items-center gap-2 px-2 py-1 hover:bg-gray-100 rounded"
+            >
+              <FaEye /> <span>View</span>
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              to={`/applications/${post._id}`}
+              className="flex items-center gap-2 px-2 py-1 hover:bg-gray-100 rounded"
+            >
+              <FaList /> <span>Applications</span>
+            </Link>
+          </li>
+
+          <li>
+            <button
+              onClick={() => handleDelete(post._id)}
+              className="w-full text-left flex items-center gap-2 px-2 py-1 hover:bg-gray-100 rounded"
+            >
+              <MdDelete /> <span>Delete</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </td>
           </tr>
         ))
       )}

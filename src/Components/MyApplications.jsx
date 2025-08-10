@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { use, useState } from 'react';
-import { FaEye } from 'react-icons/fa';
+import { FaEllipsisV, FaEye } from 'react-icons/fa';
 import { MdCancel } from 'react-icons/md';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
@@ -111,21 +111,40 @@ const MyApplications = ({ myApplicationsPromise }) => {
                   : "Rejected"}
               </button>
             </td>
-            <td>
-              <div className="join">
-                <Link to={`/postDetails/${application._id}`}>
-                  <button className="btn btn-xs btn-primary join-item">
-                    <FaEye /> View
-                  </button>
-                </Link>
-                <button
-                  onClick={() => handleDelete(application._id, application.postId)}
-                  className="btn btn-xs join-item btn-secondary"
-                >
-                  <MdCancel /> Cancel
-                </button>
-              </div>
-            </td>
+            <td align='center'>
+      <div className="dropdown dropdown-end">
+        {/* trigger */}
+        <label tabIndex={0} className="btn btn-ghost btn-sm">
+          <FaEllipsisV />
+        </label>
+
+        {/* dropdown content */}
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-40"
+        >
+          <li>
+            <Link
+              to={`/postDetails/${application._id}`}
+              className="flex items-center gap-2 px-2 py-1 hover:bg-gray-100 rounded"
+            >
+              <FaEye /> <span>View</span>
+            </Link>
+          </li>
+
+          <li>
+            <button
+              onClick={() =>
+                handleDelete(application._id, application.postId)
+              }
+              className="w-full text-left flex items-center gap-2 px-2 py-1 hover:bg-gray-100 rounded"
+            >
+              <MdCancel /> <span>Cancel</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </td>
           </tr>
         ))
       )}

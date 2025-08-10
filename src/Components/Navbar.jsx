@@ -67,6 +67,12 @@ const Navbar = () => {
               ? 'text-primary underline'
               : ' hover:text-primary transition'
           }><FaRegEdit />Add Post</NavLink></li>}
+
+          <li><NavLink to="/blogs" className={({ isActive }) =>
+            isActive
+              ? 'text-primary underline'
+              : ' hover:text-primary transition'
+          }><IoSearchOutline />Blogs</NavLink></li>
    
 
     </>
@@ -84,7 +90,7 @@ const Navbar = () => {
       {!user &&  <li><Link to="/login"><MdOutlineLogin />Login / Sign Up</Link></li>}
       </ul>
     </div>
-    <a className=" font-bold text-xl flex items-center "><span className='text-primary mr-1'><FaHandHoldingHeart size={23} /></span>Unity <span className='text-primary '>Force</span></a>
+    <Link to="/"  className=" font-bold text-xl flex items-center "><span className='text-primary mr-1'><FaHandHoldingHeart size={23} /></span>Unity <span className='text-primary '>Force</span></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu text-base font-medium menu-horizontal px-1">

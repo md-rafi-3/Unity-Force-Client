@@ -17,12 +17,13 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthConrext";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import { Helmet } from "react-helmet-async";
 
 const UpdatePost = () => {
   const { user } = useContext(AuthContext);
   const postData = useLoaderData();
+  const navigate=useNavigate()
 
   const {
     category,
@@ -69,6 +70,8 @@ const UpdatePost = () => {
           });
           form.reset();
           setDeadline(null);
+
+         setTimeout(()=>{ navigate("/profile")},2000)
         }
       })
       .catch((error) => {

@@ -63,7 +63,7 @@ setTimeout(
            
           </div>
 
-          <button onClick={()=>document.getElementById('volunteer_modal').showModal()}  className='flex items-center btn btn-primary'> <FaRegEdit /> Edit Profile </button>
+          <button onClick={()=>document.getElementById('volunteer_modal').showModal()}  className='flex items-center btn btn-primary text-white'> <FaRegEdit /> Edit Profile </button>
 
 
         </div>

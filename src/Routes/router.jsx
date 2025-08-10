@@ -13,6 +13,8 @@ import Error from '../Pages/Error';
 import PrivetRoute from '../PrivetRoute/PrivetRoute';
 import Applications from '../Pages/Applications';
 import UpdatePost from '../Pages/UpdatePost';
+import BlogPage from '../Pages/Blogs';
+import AddBlog from '../Pages/AddBlog';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
         {
           path:"addPost",
           element:<PrivetRoute><AddPost></AddPost></PrivetRoute>
+        },
+        {
+          path:"blogs",
+          element:<BlogPage></BlogPage>
+        },
+        {
+          path:"add-blog",
+          element:<PrivetRoute><AddBlog></AddBlog></PrivetRoute>
         },
         {
           path:"postDetails/:id",

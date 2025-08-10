@@ -12,7 +12,7 @@ const Profile = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="max-w-11/12 mx-auto px-4">
+    <div className="max-w-7xl mx-auto px-4">
       <Helmet>
         <title>Unity-Force || User-Profile</title>
       </Helmet>
