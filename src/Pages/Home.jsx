@@ -7,6 +7,7 @@ import WhyVolunteer from '../Components/WhyVolunteer';
 import VolunteerTestimonials from '../Components/VolunteerTestimonials';
 import CountDown from '../Components/CountDown';
 import { Helmet } from 'react-helmet-async';
+import ContactUs from '../Components/ContactUs';
 
 
 const Home = () => {
@@ -40,6 +41,8 @@ const Home = () => {
             <VolunteerTestimonials></VolunteerTestimonials>
 
             <CountDown></CountDown>
+
+            <ContactUs></ContactUs>
         </div>
     );
 };
