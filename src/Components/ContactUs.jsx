@@ -49,14 +49,14 @@ const ContactUs = () => {
             <form ref={form} onSubmit={sendEmail} className="space-y-4">
               <input
                 type="text"
-                name="user_name"
+                name="from_name"
                 placeholder="Your Name"
                 className="input input-bordered w-full"
                 required
               />
               <input
                 type="email"
-                name="user_email"
+                name="from_email"
                 placeholder="Your Email"
                 className="input input-bordered w-full"
                 required
